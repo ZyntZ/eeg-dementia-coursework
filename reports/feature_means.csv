@@ -1,0 +1,7 @@
+diagnosis,condition,rel_alpha_mean,rel_alpha_occipital,alpha_theta_ratio,spectral_entropy,peak_alpha
+AD,EC,0.0296,0.034,0.4746,2.5645,8.6875
+AD,EO,0.0258,0.0287,0.3872,2.4367,8.8571
+FTD,EC,0.0243,0.0292,0.4745,2.4586,8.8587
+FTD,EO,0.021,0.0248,0.3772,2.4365,9.0435
+HC,EC,0.0377,0.0516,0.7402,2.4981,9.3103
+HC,EO,0.027,0.0331,0.4843,2.4301,9.181

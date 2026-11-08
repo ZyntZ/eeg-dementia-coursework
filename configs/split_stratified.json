@@ -1,0 +1,12 @@
+{
+  "random_state": 42,
+  "n_splits": 5,
+  "test_size": 0.2,
+  "stratify_by": "diagnosis",
+  "train_condition": "EC",
+  "test_conditions": ["EC", "EO"],
+  "features": ["rel_delta", "rel_theta", "rel_alpha", "rel_beta", "alpha_theta_ratio", "spectral_entropy"],
+  "bands": {"delta": [0.5, 4], "theta": [4, 8], "alpha": [8, 13], "beta": [13, 30]},
+  "scaler": "StandardScaler",
+  "model": "LogisticRegression_l2_C1.0_multinomial"
+}

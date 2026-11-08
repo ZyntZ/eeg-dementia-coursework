@@ -1,9 +1,19 @@
+models:
+- logreg
+- mlp
+- lead
 pipeline:
   features: data/features_spectral.csv
-  reports: reports/
   figures: figures/
   folds: 5
-  train_condition: EC
-  test_conditions: [EC_new, EO_new, EO_familiar]
   model_baseline: LogisticRegression_l2_C1.0
   model_mlp: MLP_32x32_dropout0.3_epochs80
+  reports: reports/
+  test_conditions:
+  - EC_new
+  - EO_new
+  - EO_familiar
+  train_condition: EC
+protocols:
+- 5fold
+- loso

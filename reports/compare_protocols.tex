@@ -1,0 +1,20 @@
+\begin{table}
+\caption{Сравнение протоколов EC/EO}
+\label{tab:compare}
+\begin{tabular}{llrrr}
+\toprule
+protocol & condition & BA & F1 & n \\
+\midrule
+5fold_logreg & EC_new & 0.378 & 0.367 & 17 \\
+5fold_logreg & EO_new & 0.332 & 0.251 & 17 \\
+5fold_logreg & EO_familiar & 0.368 & 0.338 & 69 \\
+5fold_mlp & EC_new & 0.453 & NaN & 90 \\
+5fold_mlp & EO_new & 0.422 & NaN & 90 \\
+5fold_mlp & EO_familiar & 0.446 & NaN & 90 \\
+loso_logreg & EC & 0.303 & 0.305 & 88 \\
+loso_logreg & EO & 0.394 & 0.350 & 87 \\
+loso_mlp & EC & 0.436 & 0.373 & 88 \\
+loso_mlp & EO & 0.414 & 0.327 & 87 \\
+\bottomrule
+\end{tabular}
+\end{table}

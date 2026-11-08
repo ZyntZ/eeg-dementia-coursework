@@ -8,6 +8,8 @@ steps=[
     ["python","src/15_loso_eval.py"],
     ["python","src/17_mlp_loso.py"],
     ["python","src/18_compare_protocols.py"],
+    ["python","src/19_loso_plots.py"],
+    ["python","src/20_export_tables.py"],
 ]
 for cmd in steps:
     print(f">>> {' '.join(cmd)}")

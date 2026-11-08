@@ -1,0 +1,7 @@
+diagnosis,condition,rel_alpha_occipital,alpha_theta_ratio
+AD,EC,0.034,0.4746
+AD,EO,0.0287,0.3872
+FTD,EC,0.0292,0.4745
+FTD,EO,0.0248,0.3772
+HC,EC,0.0516,0.7402
+HC,EO,0.0331,0.4843

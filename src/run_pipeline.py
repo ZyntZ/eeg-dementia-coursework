@@ -1,4 +1,4 @@
-import subprocess
+import subprocess, sys, pathlib
 steps=[
     ["python","src/04_extract_features.py"],
     ["python","src/05_train_eval_real.py"],
@@ -12,5 +12,11 @@ steps=[
     ["python","src/20_export_tables.py"],
 ]
 for cmd in steps:
+    # пропускаем извлечение если нет raw но есть features
+    if cmd[1]=="src/04_extract_features.py":
+        if not pathlib.Path("data/raw/ds004504/participants.tsv").exists() and pathlib.Path("data/features_spectral.csv").exists():
+            print(f"skip {cmd[1]} — raw not present, features exist")
+            continue
     print(f">>> {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
+print("pipeline done")

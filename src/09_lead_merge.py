@@ -12,6 +12,7 @@ def merge(rs_dir, ps_dir, out_dir):
     N_rs,N_ps=meta_rs["N"], meta_ps["N"]
     N_total=N_rs+N_ps
     print(f"N_rs={N_rs} N_ps={N_ps} N_total={N_total}")
+    Path(out_dir).mkdir(parents=True, exist_ok=True)
     X_out=np.memmap(os.path.join(out_dir,"X.dat"), dtype="float32", mode="w+", shape=(N_total,T,C))
     y_out=np.memmap(os.path.join(out_dir,"y.dat"), dtype="float32", mode="w+", shape=(N_total,3))
     def copy_block(src, meta, dst_x, dst_y, off):
@@ -21,7 +22,6 @@ def merge(rs_dir, ps_dir, out_dir):
         dst_x[off:off+N]=X_src; dst_y[off:off+N]=y_src
         del X_src,y_src
         return off+N
-    Path(out_dir).mkdir(parents=True, exist_ok=True)
     cur=0
     cur=copy_block(rs_dir, meta_rs, X_out, y_out, cur)
     cur=copy_block(ps_dir, meta_ps, X_out, y_out, cur)

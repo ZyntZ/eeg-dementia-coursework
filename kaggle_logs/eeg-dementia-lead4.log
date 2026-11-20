@@ -1,0 +1,445 @@
+[{"stream_name":"stderr","time":8.375331672,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.375371197,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.375375505,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.3753782,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.006919955,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.006949535,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.006954369,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.006963676,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":15.254801622,"data":"cp: target 'Processed/L400/ADFTD/': No such file or directory\r\n"}
+,{"stream_name":"stdout","time":27.307502831,"data":"ls: cannot access 'Processed/L400/ADFTD/meta.json': No such file or directory\r\n"}
+,{"stream_name":"stdout","time":27.307547997,"data":"-rw-r--r-- 1 root root 497 Nov 20 08:58 Processed/ADFTD/meta.json\r\n"}
+,{"stream_name":"stdout","time":27.421571607,"data":"{\r\n"}
+,{"stream_name":"stdout","time":27.42162092,"data":"  \"N\": 171387,\r\n"}
+,{"stream_name":"stdout","time":27.421628443,"data":"  \"T\": 400,\r\n"}
+,{"stream_name":"stdout","time":27.421633522,"data":"  \"C\": 19,\r\n"}
+,{"stream_name":"stdout","time":27.421638328,"data":"  \"SAMPLE_RATE_LIST\": [\r\n"}
+,{"stream_name":"stdout","time":27.421643443,"data":"    200,\r\n"}
+,{"stream_name":"stdout","time":27.421648077,"data":"    100,\r\n"}
+,{"stream_name":"stdout","time":27.421652737,"data":"    50\r\n"}
+,{"stream_name":"stdout","time":27.421657313,"data":"  ],\r\n"}
+,{"stream_name":"stdout","time":27.421662045,"data":"  \"MONTAGE\": \"standard_1020\",\r\n"}
+,{"stream_name":"stdout","time":27.421667013,"data":"  \"CHANNELS\": [\r\n"}
+,{"stream_name":"stdout","time":27.421673865,"data":"    \"Fp1\",\r\n"}
+,{"stream_name":"stdout","time":27.42168217,"data":"    \"Fp2\",\r\n"}
+,{"stream_name":"stdout","time":27.421685512,"data":"    \"F3\",\r\n"}
+,{"stream_name":"stdout","time":27.421689197,"data":"    \"F4\",\r\n"}
+,{"stream_name":"stdout","time":27.421708222,"data":"    \"C3\",\r\n"}
+,{"stream_name":"stdout","time":27.421713345,"data":"    \"C4\",\r\n"}
+,{"stream_name":"stdout","time":27.421718134,"data":"    \"P3\",\r\n"}
+,{"stream_name":"stdout","time":27.421723167,"data":"    \"P4\",\r\n"}
+,{"stream_name":"stdout","time":27.421728054,"data":"    \"O1\",\r\n"}
+,{"stream_name":"stdout","time":27.533297473,"data":"cat: Processed/L400/ADFTD/meta.json: No such file or directory\r\n"}
+,{"stream_name":"stdout","time":47.089171557,"data":"Cloning into 'LEAD'...\r\n"}
+,{"stream_name":"stdout","time":49.16541802,"data":"/usr/local/lib/python3.13/dist-packages/huggingface_hub/utils/_validators.py:206: UserWarning: The `local_dir_use_symlinks` argument is deprecated and ignored in `hf_hub_download`. Downloading to a local directory does not use symlinks anymore.\r\n"}
+,{"stream_name":"stdout","time":49.165455858,"data":"  warnings.warn(\r\n"}
+,{"stream_name":"stdout","time":49.165461678,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\r\n"}
+,{"stream_name":"stdout","time":49.27818977,"data":"-rw-r--r-- 1 root root 13M Nov 20 08:59 checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth\r\n"}
+,{"stream_name":"stdout","time":244.414343113,"data":"Args in experiment:\r\n"}
+,{"stream_name":"stdout","time":244.414380524,"data":"Namespace(method='LEAD', task_name='finetune', model='LEAD', model_id='P-11-b1024-p50-g16-learnable-3D-F-ADFTD-Multi', is_training=1, data='MultiDatasets', root_path='./Processed', data_path='L400', pretraining_datasets='TDBrain', training_dataset='ADFTD', checkpoints_path='./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth', pretrain_init_path='', classify_choice='multi_class', ratio_a=0.8, ratio_b=0.9, low_cut=0.5, high_cut=45, top_k=1, num_kernels=6, seq_len=400, enc_in=19, dec_in=7, c_out=7, d_model=128, n_heads=8, e_layers=12, d_layers=1, d_ff=256, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='timeF', freq='h', activation='gelu', output_attention=False, patch_len=50, stride=50, resolution_list='2,4,6,8', nodedim=10, ffn_ratio=2, num_blocks=[1, 1, 1, 1], large_size=[31, 29, 27, 13], small_size=[5, 5, 5, 5], dims=[128, 128, 128, 128], dw_dims=[256, 256, 256, 256], brain_regions='0,0,0,0,0,0,0,2,4,4,4,2,2,1,1,1,2,3,3', patch_len_list='4', up_dim_list='76', augmentations='flip,frequency,jitter,mask,channel,drop', no_inter_attn=False, no_temporal_block=False, no_channel_block=False, group_shuffle=True, group_size=4, pretrain_linear_probe=False, contrastive_token_ratio=1.0, temporal_pos_type='learnable', channel_pos_type='3D', max_patch_positions=1024, max_channel_positions=368, use_sampling_embedding=True, sampling_rate_list='200,100,50', use_subject_loss=True, lambda2=0.75, use_subject_vote=True, sample_per_subject=2500, num_workers=0, itr=1, train_epochs=2, batch_size=64, patience=5, learning_rate=0.0001, des='test', loss='MSE', lradj='type1', use_amp=False, swa=False, no_normalize=False, single_channel_mask='none', cross_val='mccv', use_gpu=True, gpu=0, use_multi_gpu=True, devices='0', p_hidden_dims=[128, 128], p_hidden_layers=2, device_ids=[0])\r\n"}
+,{"stream_name":"stdout","time":244.414395421,"data":"Downstream fine-tuning from checkpoint\r\n"}
+,{"stream_name":"stdout","time":244.414399795,"data":"Use GPU: cuda:0\r\n"}
+,{"stream_name":"stdout","time":244.414403618,"data":"Loading TRAIN samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":244.414407617,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":244.414412627,"data":"Training ids: [np.int64(1), np.int64(3), np.int64(6), np.int64(7), np.int64(8), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(32), np.int64(33), np.int64(35), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(43), np.int64(45), np.int64(46), np.int64(48), np.int64(50), np.int64(51), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(66), np.int64(67), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(81), np.int64(82), np.int64(83), np.int64(84), np.int64(85), np.int64(86), np.int64(87)]\r\n"}
+,{"stream_name":"stdout","time":244.414419599,"data":"Number of training subjects: 69\r\n"}
+,{"stream_name":"stdout","time":244.414423545,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":244.414427656,"data":"[ADFTD] flag=TRAIN, trials=135162, subjects=69, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414437763,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=135162, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":244.414441221,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414444407,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.41444781,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414450857,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003estart training : nh8_el12_dm128_df256_seed41\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\r\n"}
+,{"stream_name":"stdout","time":244.414454995,"data":"Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth\r\n"}
+,{"stream_name":"stdout","time":244.414458277,"data":"Loaded 367 matched tensors from the pretraining checkpoint.\r\n"}
+,{"stream_name":"stdout","time":244.414461431,"data":"Missing keys: ['classifier.weight', 'classifier.bias']\r\n"}
+,{"stream_name":"stdout","time":244.414464563,"data":"Unexpected keys: []\r\n"}
+,{"stream_name":"stdout","time":244.414467698,"data":"Loading TRAIN samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":244.41447077,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":244.414474269,"data":"Training ids: [np.int64(1), np.int64(3), np.int64(6), np.int64(7), np.int64(8), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(32), np.int64(33), np.int64(35), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(43), np.int64(45), np.int64(46), np.int64(48), np.int64(50), np.int64(51), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(66), np.int64(67), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(81), np.int64(82), np.int64(83), np.int64(84), np.int64(85), np.int64(86), np.int64(87)]\r\n"}
+,{"stream_name":"stdout","time":244.414480241,"data":"Number of training subjects: 69\r\n"}
+,{"stream_name":"stdout","time":244.414483397,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":244.414486409,"data":"[ADFTD] flag=TRAIN, trials=135162, subjects=69, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414489567,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=135162, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":244.414492737,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414495903,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414499075,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414502097,"data":"Loading VAL samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":244.41450526,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":244.414508333,"data":"Validation ids: [np.int64(2), np.int64(4), np.int64(34), np.int64(36), np.int64(42), np.int64(55), np.int64(65), np.int64(78), np.int64(80)]\r\n"}
+,{"stream_name":"stdout","time":244.41451434,"data":"Number of validation subjects: 9\r\n"}
+,{"stream_name":"stdout","time":244.414517424,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":244.414520587,"data":"[ADFTD] flag=VAL, trials=17409, subjects=9, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414523673,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=17409, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":244.414526871,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414530019,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414533154,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414536185,"data":"Loading TEST samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":244.414539159,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":244.414542595,"data":"Test ids: [np.int64(5), np.int64(9), np.int64(24), np.int64(31), np.int64(44), np.int64(47), np.int64(49), np.int64(68), np.int64(70), np.int64(88)]\r\n"}
+,{"stream_name":"stdout","time":244.414545903,"data":"Number of test subjects: 10\r\n"}
+,{"stream_name":"stdout","time":244.414548892,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":244.414551933,"data":"[ADFTD] flag=TEST, trials=18816, subjects=10, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414555003,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=18816, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":244.414558207,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414561282,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414564411,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414567471,"data":"Training data summary:\r\n"}
+,{"stream_name":"stdout","time":244.414570558,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414573784,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414576907,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414579865,"data":"Validation data summary:\r\n"}
+,{"stream_name":"stdout","time":244.414582881,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414585922,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414589,"data":"\r\n"}
+,{"stream_name":"stdout","time":244.414591971,"data":"Test data summary:\r\n"}
+,{"stream_name":"stdout","time":244.414595029,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":244.414598067,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":244.414601175,"data":"Total parameters: 3324931\r\n"}
+,{"stream_name":"stdout","time":244.414604139,"data":"Utilized sampling rate(s): 200,100,50\r\n"}
+,{"stream_name":"stdout","time":244.414609633,"data":"Sampling-rate embedding: True\r\n"}
+,{"stream_name":"stdout","time":244.414612863,"data":"Temporal positional embedding: learnable\r\n"}
+,{"stream_name":"stdout","time":244.414615986,"data":"Channel positional embedding: 3D\r\n"}
+,{"stream_name":"stdout","time":244.4146191,"data":"Subject-level majority voting: True\r\n"}
+,{"stream_name":"stdout","time":244.414622111,"data":"Subject-regularized training loss: True\r\n"}
+,{"stream_name":"stdout","time":244.414625093,"data":"SWA enabled for supervised/downstream training: False\r\n"}
+,{"stream_name":"stdout","time":244.414628075,"data":"\tEpoch 1, iter 100/2111, loss: 1.8802035, speed: 0.2419s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414631199,"data":"\tEpoch 1, iter 200/2111, loss: 1.1388187, speed: 0.2129s/iter\r\n"}
+,{"stream_name":"stdout","time":244.41463421,"data":"\tEpoch 1, iter 300/2111, loss: 0.8250222, speed: 0.2049s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414637239,"data":"\tEpoch 1, iter 400/2111, loss: 1.3546257, speed: 0.2020s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414640221,"data":"\tEpoch 1, iter 500/2111, loss: 0.9724613, speed: 0.2005s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414643385,"data":"\tEpoch 1, iter 600/2111, loss: 0.6359715, speed: 0.1990s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414646407,"data":"\tEpoch 1, iter 700/2111, loss: 1.0184617, speed: 0.1978s/iter\r\n"}
+,{"stream_name":"stdout","time":244.414649673,"data":"\tEpoch 1, iter 800/2111, loss: 0.8382875, speed: 0.1971s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548509196,"data":"\tEpoch 1, iter 900/2111, loss: 0.8303533, speed: 0.1966s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548559224,"data":"\tEpoch 1, iter 1000/2111, loss: 0.3426529, speed: 0.1961s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548566683,"data":"\tEpoch 1, iter 1100/2111, loss: 0.5524273, speed: 0.1957s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548571968,"data":"\tEpoch 1, iter 1200/2111, loss: 0.2803546, speed: 0.1954s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548577251,"data":"\tEpoch 1, iter 1300/2111, loss: 0.5861761, speed: 0.1952s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548582307,"data":"\tEpoch 1, iter 1400/2111, loss: 0.9216962, speed: 0.1949s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.54858769,"data":"\tEpoch 1, iter 1500/2111, loss: 0.2531338, speed: 0.1947s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548592767,"data":"\tEpoch 1, iter 1600/2111, loss: 0.8482208, speed: 0.1946s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548598065,"data":"\tEpoch 1, iter 1700/2111, loss: 0.7516758, speed: 0.1944s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548603178,"data":"\tEpoch 1, iter 1800/2111, loss: 0.4709353, speed: 0.1943s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548608347,"data":"\tEpoch 1, iter 1900/2111, loss: 0.4347191, speed: 0.1942s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.5486136,"data":"\tEpoch 1, iter 2000/2111, loss: 0.2886377, speed: 0.1941s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548619252,"data":"\tEpoch 1, iter 2100/2111, loss: 0.1788587, speed: 0.1940s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548624579,"data":"Epoch: 1 cost time: 451.83s\r\n"}
+,{"stream_name":"stdout","time":1009.548629849,"data":"Epoch: 1, Steps: 2111, | Train Loss: 0.67513 | Learning Rate: 1.00000e-04\r\n"}
+,{"stream_name":"stdout","time":1009.548635239,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548640077,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1009.548645239,"data":"Validation results --- Accuracy: 0.70291, Precision: 0.72299, Recall: 0.74346, Specificity: 0.85537, F1: 0.70542, AUROC: 0.87429, AUPRC: 0.79001\r\n"}
+,{"stream_name":"stdout","time":1009.54866254,"data":"Test results --- Accuracy: 0.77285, Precision: 0.77913, Recall: 0.75688 Specificity: 0.88282, F1: 0.76182, AUROC: 0.91934, AUPRC: 0.86637\r\n"}
+,{"stream_name":"stdout","time":1009.548667564,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548671568,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1009.548675736,"data":"Validation results --- Accuracy: 0.77778, Precision: 0.86667, Recall: 0.83333, Specificity: 0.88889, F1: 0.80556, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1009.548680529,"data":"Test results --- Accuracy: 0.90000, Precision: 0.91667, Recall: 0.88889 Specificity: 0.95238, F1: 0.88571, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1009.548684962,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548688785,"data":"Metric score decreased (inf --\u003e -0.705424).  Saving model ...\r\n"}
+,{"stream_name":"stdout","time":1009.548693142,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548697478,"data":"------------------End of Epoch 1---------------------\r\n"}
+,{"stream_name":"stdout","time":1009.548701376,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548705063,"data":"\tEpoch 2, iter 100/2111, loss: 0.1382807, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548709057,"data":"\tEpoch 2, iter 200/2111, loss: 0.4234875, speed: 0.1923s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548712913,"data":"\tEpoch 2, iter 300/2111, loss: 0.1467001, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548716816,"data":"\tEpoch 2, iter 400/2111, loss: 0.1093015, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548720717,"data":"\tEpoch 2, iter 500/2111, loss: 0.5418114, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548724794,"data":"\tEpoch 2, iter 600/2111, loss: 0.1222519, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548730532,"data":"\tEpoch 2, iter 700/2111, loss: 0.5905132, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548734726,"data":"\tEpoch 2, iter 800/2111, loss: 0.4676876, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548738682,"data":"\tEpoch 2, iter 900/2111, loss: 0.1061019, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548742532,"data":"\tEpoch 2, iter 1000/2111, loss: 0.1493594, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.54874666,"data":"\tEpoch 2, iter 1100/2111, loss: 0.1567573, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.54875081,"data":"\tEpoch 2, iter 1200/2111, loss: 0.1347900, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548754971,"data":"\tEpoch 2, iter 1300/2111, loss: 0.2461081, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548759237,"data":"\tEpoch 2, iter 1400/2111, loss: 0.1626704, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548763412,"data":"\tEpoch 2, iter 1500/2111, loss: 0.4227210, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548767581,"data":"\tEpoch 2, iter 1600/2111, loss: 0.6423231, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548771757,"data":"\tEpoch 2, iter 1700/2111, loss: 0.1685129, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548776063,"data":"\tEpoch 2, iter 1800/2111, loss: 0.0847209, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548780399,"data":"\tEpoch 2, iter 1900/2111, loss: 0.3929378, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548789332,"data":"\tEpoch 2, iter 2000/2111, loss: 0.1186679, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548793561,"data":"\tEpoch 2, iter 2100/2111, loss: 0.2639955, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1009.548797739,"data":"Epoch: 2 cost time: 447.83s\r\n"}
+,{"stream_name":"stdout","time":1009.548801667,"data":"Epoch: 2, Steps: 2111, | Train Loss: 0.23756 | Learning Rate: 5.00000e-05\r\n"}
+,{"stream_name":"stdout","time":1009.548805847,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548809564,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1009.548822806,"data":"Validation results --- Accuracy: 0.75817, Precision: 0.76627, Recall: 0.79004, Specificity: 0.88105, F1: 0.76205, AUROC: 0.91812, AUPRC: 0.86666\r\n"}
+,{"stream_name":"stdout","time":1009.548827552,"data":"Test results --- Accuracy: 0.82175, Precision: 0.82733, Recall: 0.79557 Specificity: 0.90644, F1: 0.80322, AUROC: 0.94602, AUPRC: 0.90394\r\n"}
+,{"stream_name":"stdout","time":1009.548831839,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548835622,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1009.548839781,"data":"Validation results --- Accuracy: 0.88889, Precision: 0.91667, Recall: 0.91667, Specificity: 0.94444, F1: 0.90476, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1009.548844583,"data":"Test results --- Accuracy: 0.90000, Precision: 0.93333, Recall: 0.88889 Specificity: 0.94444, F1: 0.89630, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1009.548848879,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548852539,"data":"Metric score decreased (-0.705424 --\u003e -0.762048).  Saving model ...\r\n"}
+,{"stream_name":"stdout","time":1009.548856564,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548860436,"data":"------------------End of Epoch 2---------------------\r\n"}
+,{"stream_name":"stdout","time":1009.548864387,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548868198,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003etesting : nh8_el12_dm128_df256_seed41\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\r\n"}
+,{"stream_name":"stdout","time":1009.548874934,"data":"Loading VAL samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1009.548878887,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1009.548883848,"data":"Validation ids: [np.int64(2), np.int64(4), np.int64(34), np.int64(36), np.int64(42), np.int64(55), np.int64(65), np.int64(78), np.int64(80)]\r\n"}
+,{"stream_name":"stdout","time":1009.548888252,"data":"Number of validation subjects: 9\r\n"}
+,{"stream_name":"stdout","time":1009.548892451,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1009.548896377,"data":"[ADFTD] flag=VAL, trials=17409, subjects=9, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1009.548900442,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=17409, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1009.548904585,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1009.54890874,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1009.548912922,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548916704,"data":"Loading TEST samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1009.548925717,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1009.548929825,"data":"Test ids: [np.int64(5), np.int64(9), np.int64(24), np.int64(31), np.int64(44), np.int64(47), np.int64(49), np.int64(68), np.int64(70), np.int64(88)]\r\n"}
+,{"stream_name":"stdout","time":1009.548934147,"data":"Number of test subjects: 10\r\n"}
+,{"stream_name":"stdout","time":1009.548938174,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1009.548942115,"data":"[ADFTD] flag=TEST, trials=18816, subjects=10, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1009.548946215,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=18816, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1009.548950504,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1009.548954669,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1009.54895886,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548962482,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1009.548966331,"data":"Validation results --- Accuracy: 0.75817, Precision: 0.76627, Recall: 0.79004, Specificity: 0.88105, F1: 0.76205, AUROC: 0.91812, AUPRC: 0.86666\r\n"}
+,{"stream_name":"stdout","time":1009.548970977,"data":"Test results --- Accuracy: 0.82175, Precision: 0.82733, Recall: 0.79557 Specificity: 0.90644, F1: 0.80322, AUROC: 0.94602, AUPRC: 0.90394\r\n"}
+,{"stream_name":"stdout","time":1009.548975482,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548979362,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1009.548983491,"data":"Validation results --- Accuracy: 0.88889, Precision: 0.91667, Recall: 0.91667, Specificity: 0.94444, F1: 0.90476, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1009.548988057,"data":"Test results --- Accuracy: 0.90000, Precision: 0.93333, Recall: 0.88889 Specificity: 0.94444, F1: 0.89630, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1009.548992338,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.548996254,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003eaverage testing\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\r\n"}
+,{"stream_name":"stdout","time":1009.549001758,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1009.549005726,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549009974,"data":"Validation results --- Accuracy: 75.82+-0.00%, Precision: 76.63+-0.00%, Recall: 79.00+-0.00%, Specificity: 88.10+-0.00%, F1: 76.20+-0.00%, AUROC: 91.81+-0.00%, AUPRC: 86.67+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1009.549014277,"data":"Test results --- Accuracy: 82.17+-0.00%, Precision: 82.73+-0.00%, Recall: 79.56+-0.00%, Specificity: 90.64+-0.00%, F1: 80.32+-0.00%, AUROC: 94.60+-0.00%, AUPRC: 90.39+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1009.549018836,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1009.549022928,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549026691,"data":"Validation results --- Accuracy: 88.89+-0.00%, Precision: 91.67+-0.00%, Recall: 91.67+-0.00%, Specificity: 94.44+-0.00%, F1: 90.48+-0.00%, AUROC: 98.15+-0.00%, AUPRC: 97.22+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1009.549031078,"data":"Test results --- Accuracy: 90.00+-0.00%, Precision: 93.33+-0.00%, Recall: 88.89+-0.00%, Specificity: 94.44+-0.00%, F1: 89.63+-0.00%, AUROC: 100.00+-0.00%, AUPRC: 100.00+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1009.549039731,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549043894,"data":"Confusion Matrices (row-normalized; element-wise mean±std across runs; in %):\r\n"}
+,{"stream_name":"stdout","time":1009.549048757,"data":"Sample-level Confusion Matrix (Val) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1009.549052755,"data":"  83.50±0.00  6.84±0.00  9.66±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549056859,"data":"  27.07±0.00  60.35±0.00  12.58±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549060927,"data":"  3.12±0.00  3.71±0.00  93.16±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549064959,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549068822,"data":"Sample-level Confusion Matrix (Test) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1009.549072799,"data":"  90.41±0.00  6.10±0.00  3.49±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549076924,"data":"  7.45±0.00  88.72±0.00  3.83±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549080991,"data":"  10.19±0.00  30.27±0.00  59.54±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549084982,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549088734,"data":"Subject-level Confusion Matrix (Val) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1009.549092756,"data":"  100.00±0.00  0.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.54909691,"data":"  25.00±0.00  75.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549101151,"data":"  0.00±0.00  0.00±0.00  100.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549105251,"data":"\r\n"}
+,{"stream_name":"stdout","time":1009.549108753,"data":"Subject-level Confusion Matrix (Test) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1009.54911268,"data":"  100.00±0.00  0.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549116628,"data":"  0.00±0.00  100.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1009.549120773,"data":"  0.00±0.00  33.33±0.00  66.67±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.62768613,"data":"Args in experiment:\r\n"}
+,{"stream_name":"stdout","time":1015.627732626,"data":"Namespace(method='LEAD', task_name='finetune', model='LEAD', model_id='P-11-b1024-p50-g16-learnable-3D-F-ADFTD-Multi', is_training=1, data='MultiDatasets', root_path='./Processed', data_path='L400', pretraining_datasets='TDBrain', training_dataset='ADFTD', checkpoints_path='./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth', pretrain_init_path='', classify_choice='multi_class', ratio_a=0.8, ratio_b=0.9, low_cut=0.5, high_cut=45, top_k=1, num_kernels=6, seq_len=400, enc_in=19, dec_in=7, c_out=7, d_model=128, n_heads=8, e_layers=12, d_layers=1, d_ff=256, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='timeF', freq='h', activation='gelu', output_attention=False, patch_len=50, stride=50, resolution_list='2,4,6,8', nodedim=10, ffn_ratio=2, num_blocks=[1, 1, 1, 1], large_size=[31, 29, 27, 13], small_size=[5, 5, 5, 5], dims=[128, 128, 128, 128], dw_dims=[256, 256, 256, 256], brain_regions='0,0,0,0,0,0,0,2,4,4,4,2,2,1,1,1,2,3,3', patch_len_list='4', up_dim_list='76', augmentations='flip,frequency,jitter,mask,channel,drop', no_inter_attn=False, no_temporal_block=False, no_channel_block=False, group_shuffle=True, group_size=4, pretrain_linear_probe=False, contrastive_token_ratio=1.0, temporal_pos_type='learnable', channel_pos_type='3D', max_patch_positions=1024, max_channel_positions=368, use_sampling_embedding=True, sampling_rate_list='200,100,50', use_subject_loss=True, lambda2=0.75, use_subject_vote=True, sample_per_subject=2500, num_workers=0, itr=1, train_epochs=2, batch_size=64, patience=5, learning_rate=0.0001, des='test', loss='MSE', lradj='type1', use_amp=False, swa=False, no_normalize=False, single_channel_mask='none', cross_val='mccv', use_gpu=True, gpu=0, use_multi_gpu=True, devices='0', p_hidden_dims=[128, 128], p_hidden_layers=2, device_ids=[0])\r\n"}
+,{"stream_name":"stdout","time":1015.627757476,"data":"Downstream fine-tuning from checkpoint\r\n"}
+,{"stream_name":"stdout","time":1015.627760262,"data":"Use GPU: cuda:0\r\n"}
+,{"stream_name":"stdout","time":1015.627762544,"data":"Loading TRAIN samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.627764926,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.627768218,"data":"Training ids: [np.int64(1), np.int64(3), np.int64(6), np.int64(7), np.int64(8), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(32), np.int64(33), np.int64(35), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(43), np.int64(45), np.int64(46), np.int64(48), np.int64(50), np.int64(51), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(66), np.int64(67), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(81), np.int64(82), np.int64(83), np.int64(84), np.int64(85), np.int64(86), np.int64(87)]\r\n"}
+,{"stream_name":"stdout","time":1015.627772041,"data":"Number of training subjects: 69\r\n"}
+,{"stream_name":"stdout","time":1015.627774253,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.627776533,"data":"[ADFTD] flag=TRAIN, trials=135162, subjects=69, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627778883,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=135162, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.627781332,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627783623,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627785981,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627788113,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003estart training : nh8_el12_dm128_df256_seed41\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\u003e\r\n"}
+,{"stream_name":"stdout","time":1015.627791298,"data":"Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth\r\n"}
+,{"stream_name":"stdout","time":1015.627793833,"data":"Loaded 367 matched tensors from the pretraining checkpoint.\r\n"}
+,{"stream_name":"stdout","time":1015.627796098,"data":"Missing keys: ['classifier.weight', 'classifier.bias']\r\n"}
+,{"stream_name":"stdout","time":1015.627798353,"data":"Unexpected keys: []\r\n"}
+,{"stream_name":"stdout","time":1015.627800561,"data":"Loading TRAIN samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.627802786,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.627805431,"data":"Training ids: [np.int64(1), np.int64(3), np.int64(6), np.int64(7), np.int64(8), np.int64(10), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(18), np.int64(19), np.int64(20), np.int64(21), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(32), np.int64(33), np.int64(35), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(43), np.int64(45), np.int64(46), np.int64(48), np.int64(50), np.int64(51), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(66), np.int64(67), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(81), np.int64(82), np.int64(83), np.int64(84), np.int64(85), np.int64(86), np.int64(87)]\r\n"}
+,{"stream_name":"stdout","time":1015.627815826,"data":"Number of training subjects: 69\r\n"}
+,{"stream_name":"stdout","time":1015.627819413,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.627821761,"data":"[ADFTD] flag=TRAIN, trials=135162, subjects=69, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627824059,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=135162, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.627826428,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627828759,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627831112,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627833234,"data":"Loading VAL samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.627835501,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.627837744,"data":"Validation ids: [np.int64(2), np.int64(4), np.int64(34), np.int64(36), np.int64(42), np.int64(55), np.int64(65), np.int64(78), np.int64(80)]\r\n"}
+,{"stream_name":"stdout","time":1015.627840161,"data":"Number of validation subjects: 9\r\n"}
+,{"stream_name":"stdout","time":1015.627842376,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.627844611,"data":"[ADFTD] flag=VAL, trials=17409, subjects=9, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627846915,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=17409, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.627849287,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627851665,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627854016,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627856158,"data":"Loading TEST samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.627858417,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.627861479,"data":"Test ids: [np.int64(5), np.int64(9), np.int64(24), np.int64(31), np.int64(44), np.int64(47), np.int64(49), np.int64(68), np.int64(70), np.int64(88)]\r\n"}
+,{"stream_name":"stdout","time":1015.627863966,"data":"Number of test subjects: 10\r\n"}
+,{"stream_name":"stdout","time":1015.627866194,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.627868526,"data":"[ADFTD] flag=TEST, trials=18816, subjects=10, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627870908,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=18816, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.627877876,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627880329,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627882681,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627885045,"data":"Training data summary:\r\n"}
+,{"stream_name":"stdout","time":1015.627887239,"data":"Dataset(flag=TRAIN), total trials: 135162, total subjects: 69, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627907167,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=135162, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627909971,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627912355,"data":"Validation data summary:\r\n"}
+,{"stream_name":"stdout","time":1015.627914702,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627917121,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627919618,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.627921859,"data":"Test data summary:\r\n"}
+,{"stream_name":"stdout","time":1015.62792419,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.627926625,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.627929115,"data":"Total parameters: 3324931\r\n"}
+,{"stream_name":"stdout","time":1015.627931469,"data":"Utilized sampling rate(s): 200,100,50\r\n"}
+,{"stream_name":"stdout","time":1015.627933842,"data":"Sampling-rate embedding: True\r\n"}
+,{"stream_name":"stdout","time":1015.6279362,"data":"Temporal positional embedding: learnable\r\n"}
+,{"stream_name":"stdout","time":1015.627938577,"data":"Channel positional embedding: 3D\r\n"}
+,{"stream_name":"stdout","time":1015.627940944,"data":"Subject-level majority voting: True\r\n"}
+,{"stream_name":"stdout","time":1015.627943311,"data":"Subject-regularized training loss: True\r\n"}
+,{"stream_name":"stdout","time":1015.627945679,"data":"SWA enabled for supervised/downstream training: False\r\n"}
+,{"stream_name":"stdout","time":1015.627948079,"data":"\tEpoch 1, iter 100/2111, loss: 1.8802035, speed: 0.2419s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627950575,"data":"\tEpoch 1, iter 200/2111, loss: 1.1388187, speed: 0.2129s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627952997,"data":"\tEpoch 1, iter 300/2111, loss: 0.8250222, speed: 0.2049s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627955381,"data":"\tEpoch 1, iter 400/2111, loss: 1.3546257, speed: 0.2020s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627957755,"data":"\tEpoch 1, iter 500/2111, loss: 0.9724613, speed: 0.2005s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627960143,"data":"\tEpoch 1, iter 600/2111, loss: 0.6359715, speed: 0.1990s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627962514,"data":"\tEpoch 1, iter 700/2111, loss: 1.0184617, speed: 0.1978s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627965172,"data":"\tEpoch 1, iter 800/2111, loss: 0.8382875, speed: 0.1971s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627967583,"data":"\tEpoch 1, iter 900/2111, loss: 0.8303533, speed: 0.1966s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627969948,"data":"\tEpoch 1, iter 1000/2111, loss: 0.3426529, speed: 0.1961s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627977154,"data":"\tEpoch 1, iter 1100/2111, loss: 0.5524273, speed: 0.1957s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627979749,"data":"\tEpoch 1, iter 1200/2111, loss: 0.2803546, speed: 0.1954s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627982125,"data":"\tEpoch 1, iter 1300/2111, loss: 0.5861761, speed: 0.1952s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627984505,"data":"\tEpoch 1, iter 1400/2111, loss: 0.9216962, speed: 0.1949s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627986889,"data":"\tEpoch 1, iter 1500/2111, loss: 0.2531338, speed: 0.1947s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627989269,"data":"\tEpoch 1, iter 1600/2111, loss: 0.8482208, speed: 0.1946s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627991655,"data":"\tEpoch 1, iter 1700/2111, loss: 0.7516758, speed: 0.1944s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627994036,"data":"\tEpoch 1, iter 1800/2111, loss: 0.4709353, speed: 0.1943s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627996418,"data":"\tEpoch 1, iter 1900/2111, loss: 0.4347191, speed: 0.1942s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.627998978,"data":"\tEpoch 1, iter 2000/2111, loss: 0.2886377, speed: 0.1941s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628001357,"data":"\tEpoch 1, iter 2100/2111, loss: 0.1788587, speed: 0.1940s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628003761,"data":"Epoch: 1 cost time: 451.83s\r\n"}
+,{"stream_name":"stdout","time":1015.628006124,"data":"Epoch: 1, Steps: 2111, | Train Loss: 0.67513 | Learning Rate: 1.00000e-04\r\n"}
+,{"stream_name":"stdout","time":1015.628008605,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628010871,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1015.628013217,"data":"Validation results --- Accuracy: 0.70291, Precision: 0.72299, Recall: 0.74346, Specificity: 0.85537, F1: 0.70542, AUROC: 0.87429, AUPRC: 0.79001\r\n"}
+,{"stream_name":"stdout","time":1015.628015813,"data":"Test results --- Accuracy: 0.77285, Precision: 0.77913, Recall: 0.75688 Specificity: 0.88282, F1: 0.76182, AUROC: 0.91934, AUPRC: 0.86637\r\n"}
+,{"stream_name":"stdout","time":1015.628018358,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628020613,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1015.628022997,"data":"Validation results --- Accuracy: 0.77778, Precision: 0.86667, Recall: 0.83333, Specificity: 0.88889, F1: 0.80556, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1015.628025591,"data":"Test results --- Accuracy: 0.90000, Precision: 0.91667, Recall: 0.88889 Specificity: 0.95238, F1: 0.88571, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1015.628028145,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628030391,"data":"Metric score decreased (inf --\u003e -0.705424).  Saving model ...\r\n"}
+,{"stream_name":"stdout","time":1015.628032887,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628035145,"data":"------------------End of Epoch 1---------------------\r\n"}
+,{"stream_name":"stdout","time":1015.628037545,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.6280398,"data":"\tEpoch 2, iter 100/2111, loss: 0.1382807, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628042229,"data":"\tEpoch 2, iter 200/2111, loss: 0.4234875, speed: 0.1923s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628044598,"data":"\tEpoch 2, iter 300/2111, loss: 0.1467001, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628046974,"data":"\tEpoch 2, iter 400/2111, loss: 0.1093015, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628054111,"data":"\tEpoch 2, iter 500/2111, loss: 0.5418114, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628056758,"data":"\tEpoch 2, iter 600/2111, loss: 0.1222519, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628059148,"data":"\tEpoch 2, iter 700/2111, loss: 0.5905132, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628061521,"data":"\tEpoch 2, iter 800/2111, loss: 0.4676876, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628063907,"data":"\tEpoch 2, iter 900/2111, loss: 0.1061019, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628066307,"data":"\tEpoch 2, iter 1000/2111, loss: 0.1493594, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628068703,"data":"\tEpoch 2, iter 1100/2111, loss: 0.1567573, speed: 0.1920s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628071095,"data":"\tEpoch 2, iter 1200/2111, loss: 0.1347900, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628073537,"data":"\tEpoch 2, iter 1300/2111, loss: 0.2461081, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628075932,"data":"\tEpoch 2, iter 1400/2111, loss: 0.1626704, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628078413,"data":"\tEpoch 2, iter 1500/2111, loss: 0.4227210, speed: 0.1921s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628080801,"data":"\tEpoch 2, iter 1600/2111, loss: 0.6423231, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628083183,"data":"\tEpoch 2, iter 1700/2111, loss: 0.1685129, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628085571,"data":"\tEpoch 2, iter 1800/2111, loss: 0.0847209, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628087948,"data":"\tEpoch 2, iter 1900/2111, loss: 0.3929378, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628090349,"data":"\tEpoch 2, iter 2000/2111, loss: 0.1186679, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628092754,"data":"\tEpoch 2, iter 2100/2111, loss: 0.2639955, speed: 0.1922s/iter\r\n"}
+,{"stream_name":"stdout","time":1015.628095184,"data":"Epoch: 2 cost time: 447.83s\r\n"}
+,{"stream_name":"stdout","time":1015.628097539,"data":"Epoch: 2, Steps: 2111, | Train Loss: 0.23756 | Learning Rate: 5.00000e-05\r\n"}
+,{"stream_name":"stdout","time":1015.628099959,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628102214,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1015.628104585,"data":"Validation results --- Accuracy: 0.75817, Precision: 0.76627, Recall: 0.79004, Specificity: 0.88105, F1: 0.76205, AUROC: 0.91812, AUPRC: 0.86666\r\n"}
+,{"stream_name":"stdout","time":1015.628107149,"data":"Test results --- Accuracy: 0.82175, Precision: 0.82733, Recall: 0.79557 Specificity: 0.90644, F1: 0.80322, AUROC: 0.94602, AUPRC: 0.90394\r\n"}
+,{"stream_name":"stdout","time":1015.628109685,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628111943,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1015.628114347,"data":"Validation results --- Accuracy: 0.88889, Precision: 0.91667, Recall: 0.91667, Specificity: 0.94444, F1: 0.90476, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1015.628116914,"data":"Test results --- Accuracy: 0.90000, Precision: 0.93333, Recall: 0.88889 Specificity: 0.94444, F1: 0.89630, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1015.628119467,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628121739,"data":"Metric score decreased (-0.705424 --\u003e -0.762048).  Saving model ...\r\n"}
+,{"stream_name":"stdout","time":1015.62812931,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628131761,"data":"------------------End of Epoch 2---------------------\r\n"}
+,{"stream_name":"stdout","time":1015.62813417,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628136436,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003etesting : nh8_el12_dm128_df256_seed41\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\r\n"}
+,{"stream_name":"stdout","time":1015.628139379,"data":"Loading VAL samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.62814195,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.628144366,"data":"Validation ids: [np.int64(2), np.int64(4), np.int64(34), np.int64(36), np.int64(42), np.int64(55), np.int64(65), np.int64(78), np.int64(80)]\r\n"}
+,{"stream_name":"stdout","time":1015.628146934,"data":"Number of validation subjects: 9\r\n"}
+,{"stream_name":"stdout","time":1015.628149317,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.628151732,"data":"[ADFTD] flag=VAL, trials=17409, subjects=9, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.628154193,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=17409, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.628156916,"data":"Dataset(flag=VAL), total trials: 17409, total subjects: 9, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.628159355,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=17409, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.628161859,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628164121,"data":"Loading TEST samples from EEG datasets...\r\n"}
+,{"stream_name":"stdout","time":1015.628166493,"data":"Datasets used: ['ADFTD']\r\n"}
+,{"stream_name":"stdout","time":1015.628168823,"data":"Test ids: [np.int64(5), np.int64(9), np.int64(24), np.int64(31), np.int64(44), np.int64(47), np.int64(49), np.int64(68), np.int64(70), np.int64(88)]\r\n"}
+,{"stream_name":"stdout","time":1015.628171415,"data":"Number of test subjects: 10\r\n"}
+,{"stream_name":"stdout","time":1015.628173747,"data":"Keep all subjects for multi-class classification\r\n"}
+,{"stream_name":"stdout","time":1015.628176141,"data":"[ADFTD] flag=TEST, trials=18816, subjects=10, T=400, C=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.628178593,"data":"[dataset_id=1, compatibility_group=0] ADFTD: trials=18816, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]\r\n"}
+,{"stream_name":"stdout","time":1015.62818112,"data":"Dataset(flag=TEST), total trials: 18816, total subjects: 10, total datasets: 1.\r\n"}
+,{"stream_name":"stdout","time":1015.628183557,"data":"  dataset_id=1, compatibility_group=0, name=ADFTD, trials=18816, seq_len=400, channels=19, montage=standard_1020\r\n"}
+,{"stream_name":"stdout","time":1015.628186063,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628188317,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1015.62819064,"data":"Validation results --- Accuracy: 0.75817, Precision: 0.76627, Recall: 0.79004, Specificity: 0.88105, F1: 0.76205, AUROC: 0.91812, AUPRC: 0.86666\r\n"}
+,{"stream_name":"stdout","time":1015.628193189,"data":"Test results --- Accuracy: 0.82175, Precision: 0.82733, Recall: 0.79557 Specificity: 0.90644, F1: 0.80322, AUROC: 0.94602, AUPRC: 0.90394\r\n"}
+,{"stream_name":"stdout","time":1015.628195727,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628197983,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1015.628204951,"data":"Validation results --- Accuracy: 0.88889, Precision: 0.91667, Recall: 0.91667, Specificity: 0.94444, F1: 0.90476, AUROC: 0.98148, AUPRC: 0.97222\r\n"}
+,{"stream_name":"stdout","time":1015.628207741,"data":"Test results --- Accuracy: 0.90000, Precision: 0.93333, Recall: 0.88889 Specificity: 0.94444, F1: 0.89630, AUROC: 1.00000, AUPRC: 1.00000\r\n"}
+,{"stream_name":"stdout","time":1015.628210273,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628212522,"data":"\u003e\u003e\u003e\u003e\u003e\u003e\u003eaverage testing\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\r\n"}
+,{"stream_name":"stdout","time":1015.628245705,"data":"Sample-level results: \r\n"}
+,{"stream_name":"stdout","time":1015.628253665,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628257577,"data":"Validation results --- Accuracy: 75.82+-0.00%, Precision: 76.63+-0.00%, Recall: 79.00+-0.00%, Specificity: 88.10+-0.00%, F1: 76.20+-0.00%, AUROC: 91.81+-0.00%, AUPRC: 86.67+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1015.628262211,"data":"Test results --- Accuracy: 82.17+-0.00%, Precision: 82.73+-0.00%, Recall: 79.56+-0.00%, Specificity: 90.64+-0.00%, F1: 80.32+-0.00%, AUROC: 94.60+-0.00%, AUPRC: 90.39+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1015.628266423,"data":"Subject-level results after majority voting: \r\n"}
+,{"stream_name":"stdout","time":1015.628270699,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628274471,"data":"Validation results --- Accuracy: 88.89+-0.00%, Precision: 91.67+-0.00%, Recall: 91.67+-0.00%, Specificity: 94.44+-0.00%, F1: 90.48+-0.00%, AUROC: 98.15+-0.00%, AUPRC: 97.22+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1015.628281391,"data":"Test results --- Accuracy: 90.00+-0.00%, Precision: 93.33+-0.00%, Recall: 88.89+-0.00%, Specificity: 94.44+-0.00%, F1: 89.63+-0.00%, AUROC: 100.00+-0.00%, AUPRC: 100.00+-0.00%\r\n"}
+,{"stream_name":"stdout","time":1015.628288707,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628291075,"data":"Confusion Matrices (row-normalized; element-wise mean±std across runs; in %):\r\n"}
+,{"stream_name":"stdout","time":1015.62829411,"data":"Sample-level Confusion Matrix (Val) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1015.628296756,"data":"  83.50±0.00  6.84±0.00  9.66±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628299297,"data":"  27.07±0.00  60.35±0.00  12.58±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628301683,"data":"  3.12±0.00  3.71±0.00  93.16±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628304131,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628306364,"data":"Sample-level Confusion Matrix (Test) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1015.62830885,"data":"  90.41±0.00  6.10±0.00  3.49±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628311227,"data":"  7.45±0.00  88.72±0.00  3.83±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628318532,"data":"  10.19±0.00  30.27±0.00  59.54±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628321117,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628323451,"data":"Subject-level Confusion Matrix (Val) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1015.628325845,"data":"  100.00±0.00  0.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628328322,"data":"  25.00±0.00  75.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628330824,"data":"  0.00±0.00  0.00±0.00  100.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628333307,"data":"\r\n"}
+,{"stream_name":"stdout","time":1015.628335607,"data":"Subject-level Confusion Matrix (Test) [mean±std, %]\r\n"}
+,{"stream_name":"stdout","time":1015.628344705,"data":"  100.00±0.00  0.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.628347272,"data":"  0.00±0.00  100.00±0.00  0.00±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.62834974,"data":"  0.00±0.00  33.33±0.00  66.67±0.00\r\n"}
+,{"stream_name":"stdout","time":1015.728759079,"data":"finetune v7 done\n"}
+,{"stream_name":"stderr","time":1018.408738878,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1018.408765761,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1018.590290623,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1018.590314048,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1019.424778872,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1019.512056853,"data":"[NbConvertApp] Writing 42428 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1022.204291371,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1022.739924112,"data":"[NbConvertApp] Writing 318215 bytes to __results__.html\n"}
+]

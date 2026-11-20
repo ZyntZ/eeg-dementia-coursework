@@ -46,7 +46,7 @@ out.to_csv("reports/stats_summary.csv", index=False)
 print("\nSaved reports/stats_summary.csv")
 # Bootstrap CI (было не вызывался) + FDR поправка
 from statsmodels.stats.multitest import multipletests
-pvals=[]
+pvals=[]; names=[]
 for feat in ["rel_alpha_occipital","alpha_theta_ratio","rel_theta_mean"]:
     for dx in ["HC","AD","FTD"]:
         m=pd.merge(df[df.condition=="EC"][["participant_id",feat]].rename(columns={feat:"ec"}),
@@ -55,9 +55,14 @@ for feat in ["rel_alpha_occipital","alpha_theta_ratio","rel_theta_mean"]:
         sub=m[m.diagnosis==dx]
         if len(sub)>=5:
             pvals.append(ttest_rel(sub.ec,sub.eo).pvalue)
+            names.append(f"{feat} / {dx}")
 if pvals:
-    _, p_corr, _, _ = multipletests(pvals, method='fdr_bh')
-    print(f"FDR BH corrected p (9 tests): min {min(p_corr):.4f}, HC alpha/theta raw p=0.0128 -> FDR? (см. README Limitations)")
+    rej, p_corr, _, _ = multipletests(pvals, method='fdr_bh')
+    print(f"\nFDR BH по {len(pvals)} тестам:")
+    for n, raw_p, adj, r in zip(names, pvals, p_corr, rej):
+        print(f"  {n:34s} p={raw_p:.4f}  FDR={adj:.4f}  {'значимо' if r else ''}")
+    pd.DataFrame({"test":names,"p_raw":pvals,"p_fdr":p_corr,"significant":rej}).to_csv(
+        "reports/stats_paired_fdr.csv", index=False)
 # Пример bootstrap для LOSO
 try:
     loso=pd.read_csv("reports/loso_preds.csv")

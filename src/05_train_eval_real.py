@@ -2,10 +2,12 @@ import pandas as pd, numpy as np
 from pathlib import Path
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import StratifiedGroupKFold
 from sklearn.metrics import balanced_accuracy_score, f1_score, confusion_matrix, classification_report
 
-df=pd.read_csv("data/features_spectral.csv")
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_features
+df=load_features()
 print(df.shape)
 print(df.groupby(["condition","diagnosis"]).size())
 
@@ -25,7 +27,8 @@ subjects = df["participant_id"].unique()
 subj_dx = df.drop_duplicates("participant_id").set_index("participant_id")["diagnosis"].to_dict()
 y_subj = np.array([subj_dx[s] for s in subjects])
 
-# 5-fold stratified group (группы = субъекты)
+# 5 фолдов по ЛЮДЯМ: делим список subjects, а не строки таблицы,
+# поэтому обе записи человека всегда по одну сторону
 from sklearn.model_selection import StratifiedKFold
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
@@ -40,7 +43,7 @@ for fold, (train_idx, test_idx) in enumerate(skf.split(subjects, y_subj), 1):
     y_train = df.loc[train_mask, "diagnosis"].values
     scaler = StandardScaler().fit(X_train)
     X_train_s = scaler.transform(X_train)
-    clf = LogisticRegression(multi_class="multinomial", solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
+    clf = LogisticRegression(solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
     clf.fit(X_train_s, y_train)
 
     # тесты

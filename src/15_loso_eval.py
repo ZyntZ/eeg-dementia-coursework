@@ -5,7 +5,10 @@ from sklearn.metrics import balanced_accuracy_score, f1_score, confusion_matrix,
 from pathlib import Path
 from tqdm import tqdm
 
-df=pd.read_csv("data/features_spectral.csv")
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_features
+df=load_features()
 feats=["rel_delta_mean","rel_theta_mean","rel_alpha_mean","rel_beta_mean","rel_alpha_occipital","alpha_theta_ratio","spectral_entropy","peak_alpha"]
 subjects=df["participant_id"].unique()
 subj_dx=df.drop_duplicates("participant_id").set_index("participant_id")["diagnosis"].to_dict()
@@ -21,7 +24,7 @@ for test_sub in tqdm(subjects, desc="LOSO"):
     X_train=df.loc[train_mask, feats].values
     y_train=np.array([label_map[d] for d in df.loc[train_mask,"diagnosis"]])
     scaler=StandardScaler().fit(X_train)
-    clf=LogisticRegression(multi_class="multinomial", solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
+    clf=LogisticRegression(solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
     clf.fit(scaler.transform(X_train), y_train)
     for cond, cm_acc in [("EC",cms_ec),("EO",cms_eo)]:
         mask=df["participant_id"]==test_sub

@@ -1,4 +1,4 @@
 protocol,condition,BA,F1,n
-5fold_mlp,EC_new,0.4532539682539682,,90
-5fold_mlp,EO_new,0.4224603174603175,,90
-5fold_mlp,EO_familiar,0.4463205566528905,,90
+5fold_mlp,EC_new,0.5041269841269842,,17
+5fold_mlp,EO_new,0.3633333333333333,,16
+5fold_mlp,EO_familiar,0.4622222469876932,,55

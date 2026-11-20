@@ -8,7 +8,10 @@ SEED=42
 random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED); torch.cuda.manual_seed_all(SEED)
 torch.backends.cudnn.deterministic=True; torch.backends.cudnn.benchmark=False
 
-df=pd.read_csv("data/features_spectral.csv")
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_features
+df=load_features()
 feats=["rel_delta_mean","rel_theta_mean","rel_alpha_mean","rel_beta_mean","rel_alpha_occipital","alpha_theta_ratio","spectral_entropy","peak_alpha"]
 subjects=df["participant_id"].unique()
 subj_dx=df.drop_duplicates("participant_id").set_index("participant_id")["diagnosis"].to_dict()

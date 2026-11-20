@@ -6,7 +6,10 @@ from sklearn.metrics import balanced_accuracy_score, f1_score
 from sklearn.decomposition import PCA
 from sklearn.pipeline import Pipeline
 
-df=pd.read_csv("data/features_spectral.csv")
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+from _common import load_features
+df=load_features()
 # Попробуем разные наборы признаков
 sets={
  "all_mean": ["rel_delta_mean","rel_theta_mean","rel_alpha_mean","rel_beta_mean","alpha_theta_ratio","spectral_entropy","peak_alpha"],
@@ -28,7 +31,7 @@ for name, feats in sets.items():
         train_mask=df["participant_id"].isin(train_subs) & (df["condition"]=="EC")
         X_train=df.loc[train_mask, feats].values; y_train=df.loc[train_mask,"diagnosis"].values
         scaler=StandardScaler().fit(X_train)
-        clf=LogisticRegression(multi_class="multinomial", solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
+        clf=LogisticRegression(solver="lbfgs", C=1.0, max_iter=1000, class_weight="balanced")
         clf.fit(scaler.transform(X_train), y_train)
         for test_name, cond, subs in [("EC_new","EC",test_subs),("EO_new","EO",test_subs)]:
             mask=df["participant_id"].isin(subs) & (df["condition"]==cond)

@@ -1,8 +1,12 @@
-import pandas as pd, numpy as np
+import pandas as pd, numpy as np, random, os
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import balanced_accuracy_score
 import torch, torch.nn as nn
+# Фиксация сида для воспроизводимости
+SEED=42
+random.seed(SEED); np.random.seed(SEED); torch.manual_seed(SEED); torch.cuda.manual_seed_all(SEED)
+torch.backends.cudnn.deterministic=True; torch.backends.cudnn.benchmark=False
 
 df=pd.read_csv("data/features_spectral.csv")
 feats=["rel_delta_mean","rel_theta_mean","rel_alpha_mean","rel_beta_mean","rel_alpha_occipital","alpha_theta_ratio","spectral_entropy","peak_alpha"]

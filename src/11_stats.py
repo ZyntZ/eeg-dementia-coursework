@@ -44,3 +44,25 @@ for feat in ["rel_alpha_occipital","alpha_theta_ratio","rel_theta_mean"]:
 out=pd.DataFrame({"test":["EC_new","EO_new","EO_familiar"],"BA_mean":[ec.mean(),eo.mean(),fam.mean()],"BA_std":[ec.std(),eo.std(),fam.std()]})
 out.to_csv("reports/stats_summary.csv", index=False)
 print("\nSaved reports/stats_summary.csv")
+# Bootstrap CI (было не вызывался) + FDR поправка
+from statsmodels.stats.multitest import multipletests
+pvals=[]
+for feat in ["rel_alpha_occipital","alpha_theta_ratio","rel_theta_mean"]:
+    for dx in ["HC","AD","FTD"]:
+        m=pd.merge(df[df.condition=="EC"][["participant_id",feat]].rename(columns={feat:"ec"}),
+                   df[df.condition=="EO"][["participant_id",feat]].rename(columns={feat:"eo"}), on="participant_id")
+        m["diagnosis"]=m["participant_id"].map(subj_dx)
+        sub=m[m.diagnosis==dx]
+        if len(sub)>=5:
+            pvals.append(ttest_rel(sub.ec,sub.eo).pvalue)
+if pvals:
+    _, p_corr, _, _ = multipletests(pvals, method='fdr_bh')
+    print(f"FDR BH corrected p (9 tests): min {min(p_corr):.4f}, HC alpha/theta raw p=0.0128 -> FDR? (см. README Limitations)")
+# Пример bootstrap для LOSO
+try:
+    loso=pd.read_csv("reports/loso_preds.csv")
+    lo, hi = bootstrap_subject(loso[loso.condition=="EC"].y_true, loso[loso.condition=="EC"].y_pred)
+    print(f"LOSO EC bootstrap 95% CI: [{lo:.3f}, {hi:.3f}] (n={len(loso[loso.condition=='EC'])})")
+except Exception as e:
+    print(f"bootstrap skip: {e}")
+print("WARN: t-тесты по 5 фолдам маломощны (n=5) — см. README")

@@ -25,9 +25,13 @@ for test in ["EC_new","EO_new","EO_familiar"]:
     rows.append({"protocol":"5fold_logreg","condition":test,"BA":sub.BA.mean(),"F1":sub.F1_macro.mean(),"n":sub.n.sum()//5})
 
 mlp=pd.read_csv("reports/metrics_mlp.csv")
+# n для mccv/mccv берем из основного протокола, а не хардкодом 18
+real_n = real.set_index("test")["n"].to_dict() if "n" in real.columns else {}
 for test in ["EC_new","EO_new","EO_familiar"]:
     sub=mlp[mlp.test==test]
-    rows.append({"protocol":"5fold_mlp","condition":test,"BA":sub.BA.mean(),"F1":None,"n":sub.BA.count()*18})
+    # было sub.BA.count()*18 — неверно для EO_familiar (69, а не 90)
+    n_est = int(real_n.get(test, sub.shape[0]*18)) if real_n else int(sub.shape[0]*18)
+    rows.append({"protocol":"5fold_mlp","condition":test,"BA":sub.BA.mean(),"F1":None,"n":n_est})
 
 # loso
 for name, path in [("loso_logreg","reports/loso_preds.csv"),("loso_mlp","reports/loso_mlp_preds.csv")]:

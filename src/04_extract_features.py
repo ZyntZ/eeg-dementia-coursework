@@ -10,21 +10,35 @@ from tqdm import tqdm
 import json
 
 BANDS = {"delta": (0.5,4), "theta": (4,8), "alpha": (8,13), "beta": (13,30), "alpha_low": (8,10), "alpha_high": (10,13)}
-SFREQ=500
+SFREQ_NATIVE=500  # ds004504 нативно 500 Гц (не 200 Гц), LEAD ресемплит в 200/100/50
+# Корректные группы по именам каналов (не хардкод индексов)
+OCCIPITAL_CHS = ["O1","O2","P3","P4","T5","T6","PO3","PO4"] # затылочные/теменные, fallback к имеющимся
+FRONTAL_CHS = ["Fp1","Fp2","F3","F4","Fz","F7","F8"]
+CENTRAL_CHS = ["C3","C4","Cz"]
+
+def _idx_by_name(raw, wanted):
+    chs = [c.strip() for c in raw.ch_names]
+    idx = [chs.index(w) for w in wanted if w in chs]
+    return idx if idx else list(range(len(chs))) # fallback
 
 def psd_features(raw, fmin=0.5, fmax=45):
-    # Welch, 4s окна, 50% overlap
-    psd = raw.compute_psd(method='welch', fmin=fmin, fmax=fmax, n_fft=int(4*SFREQ), n_overlap=int(2*SFREQ), verbose=False)
+    # Референс + нотч как минимум: у датасета заявлены глазодвигательные артефакты
+    raw = raw.copy().set_eeg_reference('average', verbose=False)
+    raw.notch_filter(50, verbose=False)
+    # Welch, 4s окна, 50% overlap, нативная Fs
+    psd = raw.compute_psd(method='welch', fmin=fmin, fmax=fmax, n_fft=int(4*SFREQ_NATIVE), n_overlap=int(2*SFREQ_NATIVE), verbose=False)
     psds, freqs = psd.get_data(), psd.freqs
     # psds: (n_channels, n_freqs)
     total = psds[:, (freqs>=0.5)&(freqs<=30)].sum(axis=1, keepdims=True) + 1e-12
+    occ_idx = _idx_by_name(raw, OCCIPITAL_CHS)
+    front_idx = _idx_by_name(raw, FRONTAL_CHS)
     feats = {}
     for name,(lo,hi) in BANDS.items():
         mask=(freqs>=lo)&(freqs<=hi)
         rel = psds[:, mask].sum(axis=1) / total.squeeze()  # per channel
         feats[f"rel_{name}_mean"] = rel.mean()
-        feats[f"rel_{name}_occipital"] = rel[[7,8,13,14]].mean()  # P3,P4,T5,T6 / O1,O2 approx
-        feats[f"rel_{name}_frontal"] = rel[[0,1,2,3,10,11]].mean()
+        feats[f"rel_{name}_occipital"] = rel[occ_idx].mean()
+        feats[f"rel_{name}_frontal"] = rel[front_idx].mean()
     # дополнительно
     feats["alpha_theta_ratio"] = feats["rel_alpha_mean"] / (feats["rel_theta_mean"]+1e-9)
     feats["theta_beta_ratio"] = feats["rel_theta_mean"] / (feats["rel_beta_mean"]+1e-9)

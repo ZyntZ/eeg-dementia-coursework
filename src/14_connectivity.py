@@ -8,12 +8,11 @@ except:
     HAS_CONN=False
 
 if __name__=="__main__":
-    if not HAS_CONN or not Path("data/raw/ds004504/sub-001/eeg").exists():
-        print("raw not present or lib missing, skip")
-        df=pd.read_csv("data/features_spectral.csv")
-        df["wpli_alpha_O_F"]=np.nan
-        df["wpli_theta_O_F"]=np.nan
-        df.to_csv("data/features_with_conn.csv", index=False)
-        print("saved data/features_with_conn.csv with NaNs")
-    else:
-        print("connectivity would run here")
+    # Честно: wPLI не считался — нет raw на Kaggle, lib опциональна. Пишем NaN c пометкой.
+    print("WARN: connectivity stub — wPLI не считался (raw отсутствует / mne_connectivity опционально)")
+    print("Файл features_with_conn.csv создан для совместимости, но значения NaN — не использовать в оценке")
+    df=pd.read_csv("data/features_spectral.csv")
+    df["wpli_alpha_O_F"]=np.nan
+    df["wpli_theta_O_F"]=np.nan
+    df.to_csv("data/features_with_conn.csv", index=False)
+    print("saved data/features_with_conn.csv with NaNs (stub)")

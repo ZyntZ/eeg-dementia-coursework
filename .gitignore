@@ -1,0 +1,23 @@
+# данные и веса не коммитим
+data/raw
+data/raw/
+Processed/*/X.dat
+Processed/*/y.dat
+Processed/**/X.dat
+Processed/**/y.dat
+checkpoints/
+*.fdt
+*.set
+
+# ключи и токены
+kaggle.json
+.kaggle/
+*.pem
+.env
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store

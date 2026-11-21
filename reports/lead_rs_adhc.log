@@ -1,0 +1,1012 @@
+Args in experiment:
+Namespace(method='LEAD', task_name='finetune', model='LEAD', model_id='P-11-F-rs-adhc', is_training=1, data='MultiDatasets', root_path='./Processed', data_path='L400', pretraining_datasets='TDBrain', training_dataset='ADFTD-RS', checkpoints_path='./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth', pretrain_init_path='', classify_choice='ad_vs_hc', ratio_a=0.8, ratio_b=0.9, low_cut=0.5, high_cut=45, top_k=1, num_kernels=6, seq_len=400, enc_in=19, dec_in=7, c_out=7, d_model=128, n_heads=8, e_layers=12, d_layers=1, d_ff=256, moving_avg=25, factor=1, distil=True, dropout=0.1, embed='timeF', freq='h', activation='gelu', output_attention=False, patch_len=50, stride=50, resolution_list='2,4,6,8', nodedim=10, ffn_ratio=2, num_blocks=[1, 1, 1, 1], large_size=[31, 29, 27, 13], small_size=[5, 5, 5, 5], dims=[128, 128, 128, 128], dw_dims=[256, 256, 256, 256], brain_regions='0,0,0,0,0,0,0,2,4,4,4,2,2,1,1,1,2,3,3', patch_len_list='4', up_dim_list='76', augmentations='flip,frequency,jitter,mask,channel,drop', no_inter_attn=False, no_temporal_block=False, no_channel_block=False, group_shuffle=True, group_size=4, pretrain_linear_probe=False, contrastive_token_ratio=1.0, temporal_pos_type='learnable', channel_pos_type='3D', max_patch_positions=1024, max_channel_positions=368, use_sampling_embedding=True, sampling_rate_list='200,100,50', use_subject_loss=True, lambda2=0.75, use_subject_vote=True, sample_per_subject=2500, num_workers=0, itr=5, train_epochs=8, batch_size=64, patience=3, learning_rate=0.0001, des='5fold_rs-adhc', loss='MSE', lradj='type1', use_amp=False, swa=False, no_normalize=False, single_channel_mask='none', cross_val='5-fold', use_gpu=True, gpu=0, use_multi_gpu=True, devices='0', p_hidden_dims=[128, 128], p_hidden_layers=2, device_ids=[0])
+Downstream fine-tuning from checkpoint
+Use GPU: cuda:0
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(12), np.int64(13), np.int64(15), np.int64(17), np.int64(18), np.int64(20), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(28), np.int64(31), np.int64(32), np.int64(34), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(44), np.int64(45), np.int64(50), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(65), np.int64(67), np.int64(69), np.int64(70), np.int64(71), np.int64(73), np.int64(74), np.int64(76), np.int64(77), np.int64(78), np.int64(80), np.int64(82), np.int64(83), np.int64(86), np.int64(87)]
+Number of training subjects: 54
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=57628, subjects=54, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=57628, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 57628, total subjects: 40, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57628, seq_len=400, channels=19, montage=standard_1020
+
+>>>>>>>start training : nh8_el12_dm128_df256_seed41>>>>>>>>>>>>>>>>>>>>>>>>>>
+Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth
+Loaded 367 matched tensors from the pretraining checkpoint.
+Missing keys: ['classifier.weight', 'classifier.bias']
+Unexpected keys: []
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(2), np.int64(3), np.int64(4), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(12), np.int64(13), np.int64(15), np.int64(17), np.int64(18), np.int64(20), np.int64(22), np.int64(23), np.int64(25), np.int64(26), np.int64(28), np.int64(31), np.int64(32), np.int64(34), np.int64(37), np.int64(38), np.int64(39), np.int64(40), np.int64(41), np.int64(44), np.int64(45), np.int64(50), np.int64(53), np.int64(54), np.int64(56), np.int64(57), np.int64(60), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(65), np.int64(67), np.int64(69), np.int64(70), np.int64(71), np.int64(73), np.int64(74), np.int64(76), np.int64(77), np.int64(78), np.int64(80), np.int64(82), np.int64(83), np.int64(86), np.int64(87)]
+Number of training subjects: 54
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=57628, subjects=54, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=57628, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 57628, total subjects: 40, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57628, seq_len=400, channels=19, montage=standard_1020
+
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(6), np.int64(10), np.int64(16), np.int64(19), np.int64(29), np.int64(30), np.int64(36), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(52), np.int64(68), np.int64(75), np.int64(79), np.int64(84), np.int64(88)]
+Number of validation subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19383, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19383, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(8), np.int64(14), np.int64(21), np.int64(24), np.int64(27), np.int64(33), np.int64(35), np.int64(47), np.int64(51), np.int64(55), np.int64(58), np.int64(59), np.int64(66), np.int64(72), np.int64(81), np.int64(85)]
+Number of test subjects: 16
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=16926, subjects=16, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=16926, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+
+Training data summary:
+Dataset(flag=TRAIN), total trials: 57628, total subjects: 40, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57628, seq_len=400, channels=19, montage=standard_1020
+
+Validation data summary:
+Dataset(flag=VAL), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+
+Test data summary:
+Dataset(flag=TEST), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+Total parameters: 3322498
+Utilized sampling rate(s): 200,100,50
+Sampling-rate embedding: True
+Temporal positional embedding: learnable
+Channel positional embedding: 3D
+Subject-level majority voting: True
+Subject-regularized training loss: True
+SWA enabled for supervised/downstream training: False
+	Epoch 1, iter 100/900, loss: 0.8018816, speed: 2.5770s/iter
+	Epoch 1, iter 200/900, loss: 0.6769834, speed: 2.0049s/iter
+	Epoch 1, iter 300/900, loss: 0.4624657, speed: 1.6800s/iter
+	Epoch 1, iter 400/900, loss: 0.1446205, speed: 1.4422s/iter
+	Epoch 1, iter 500/900, loss: 0.3807790, speed: 1.2562s/iter
+	Epoch 1, iter 600/900, loss: 0.2659189, speed: 1.1062s/iter
+	Epoch 1, iter 700/900, loss: 0.4581733, speed: 0.9861s/iter
+	Epoch 1, iter 800/900, loss: 0.1488788, speed: 0.8907s/iter
+	Epoch 1, iter 900/900, loss: 0.0363551, speed: 0.8147s/iter
+Epoch: 1 cost time: 782.96s
+Epoch: 1, Steps: 900, | Train Loss: 0.43669 | Learning Rate: 1.00000e-04
+
+Sample-level results: 
+Validation results --- Accuracy: 0.61435, Precision: 0.63101, Recall: 0.62435, Specificity: 0.62435, F1: 0.61186, AUROC: 0.68748, AUPRC: 0.69483
+Test results --- Accuracy: 0.84060, Precision: 0.84072, Recall: 0.82714 Specificity: 0.82714, F1: 0.83217, AUROC: 0.93470, AUPRC: 0.93379
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429, Specificity: 0.71429, F1: 0.67500, AUROC: 0.69048, AUPRC: 0.81984
+Test results --- Accuracy: 0.91667, Precision: 0.93750, Recall: 0.90000 Specificity: 0.90000, F1: 0.91111, AUROC: 0.97143, AUPRC: 0.98214
+
+Metric score decreased (inf --> -0.611864).  Saving model ...
+
+------------------End of Epoch 1---------------------
+
+	Epoch 2, iter 100/900, loss: 0.4062051, speed: 0.2030s/iter
+	Epoch 2, iter 200/900, loss: 0.0778436, speed: 0.2035s/iter
+	Epoch 2, iter 300/900, loss: 0.1429360, speed: 0.2037s/iter
+	Epoch 2, iter 400/900, loss: 0.1415343, speed: 0.2038s/iter
+	Epoch 2, iter 500/900, loss: 0.3968970, speed: 0.2039s/iter
+	Epoch 2, iter 600/900, loss: 0.0278456, speed: 0.2039s/iter
+	Epoch 2, iter 700/900, loss: 0.1521163, speed: 0.2039s/iter
+	Epoch 2, iter 800/900, loss: 0.1677887, speed: 0.2040s/iter
+	Epoch 2, iter 900/900, loss: 0.0823638, speed: 0.2041s/iter
+Epoch: 2 cost time: 227.32s
+Epoch: 2, Steps: 900, | Train Loss: 0.15068 | Learning Rate: 9.61940e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.61048, Precision: 0.62837, Recall: 0.62099, Specificity: 0.62099, F1: 0.60752, AUROC: 0.66934, AUPRC: 0.67250
+Test results --- Accuracy: 0.86813, Precision: 0.86559, Recall: 0.86045 Specificity: 0.86045, F1: 0.86274, AUROC: 0.95184, AUPRC: 0.94985
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429, Specificity: 0.71429, F1: 0.67500, AUROC: 0.69048, AUPRC: 0.79885
+Test results --- Accuracy: 1.00000, Precision: 1.00000, Recall: 1.00000 Specificity: 1.00000, F1: 1.00000, AUROC: 1.00000, AUPRC: 1.00000
+
+EarlyStopping counter: 1 out of 3
+------------------End of Epoch 2---------------------
+
+	Epoch 3, iter 100/900, loss: 0.1184370, speed: 0.2033s/iter
+	Epoch 3, iter 200/900, loss: 0.0485325, speed: 0.2037s/iter
+	Epoch 3, iter 300/900, loss: 0.0619457, speed: 0.2036s/iter
+	Epoch 3, iter 400/900, loss: 0.1499442, speed: 0.2037s/iter
+	Epoch 3, iter 500/900, loss: 0.0631288, speed: 0.2038s/iter
+	Epoch 3, iter 600/900, loss: 0.0206958, speed: 0.2038s/iter
+	Epoch 3, iter 700/900, loss: 0.0096218, speed: 0.2039s/iter
+	Epoch 3, iter 800/900, loss: 0.0182434, speed: 0.2040s/iter
+	Epoch 3, iter 900/900, loss: 0.1760952, speed: 0.2040s/iter
+Epoch: 3 cost time: 227.14s
+Epoch: 3, Steps: 900, | Train Loss: 0.09564 | Learning Rate: 8.53553e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.59078, Precision: 0.61867, Recall: 0.60494, Specificity: 0.60494, F1: 0.58317, AUROC: 0.62621, AUPRC: 0.63815
+Test results --- Accuracy: 0.88296, Precision: 0.87753, Recall: 0.88442 Specificity: 0.88442, F1: 0.88019, AUROC: 0.95650, AUPRC: 0.95397
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429, Specificity: 0.71429, F1: 0.67500, AUROC: 0.52381, AUPRC: 0.72772
+Test results --- Accuracy: 0.91667, Precision: 0.91667, Recall: 0.92857 Specificity: 0.92857, F1: 0.91608, AUROC: 1.00000, AUPRC: 1.00000
+
+EarlyStopping counter: 2 out of 3
+------------------End of Epoch 3---------------------
+
+	Epoch 4, iter 100/900, loss: 0.0350525, speed: 0.2032s/iter
+	Epoch 4, iter 200/900, loss: 0.0859361, speed: 0.2036s/iter
+	Epoch 4, iter 300/900, loss: 0.0723673, speed: 0.2037s/iter
+	Epoch 4, iter 400/900, loss: 0.0852455, speed: 0.2038s/iter
+	Epoch 4, iter 500/900, loss: 0.0580284, speed: 0.2038s/iter
+	Epoch 4, iter 600/900, loss: 0.0759480, speed: 0.2039s/iter
+	Epoch 4, iter 700/900, loss: 0.0356144, speed: 0.2039s/iter
+	Epoch 4, iter 800/900, loss: 0.0107605, speed: 0.2039s/iter
+	Epoch 4, iter 900/900, loss: 0.0084520, speed: 0.2039s/iter
+Epoch: 4 cost time: 226.96s
+Epoch: 4, Steps: 900, | Train Loss: 0.07237 | Learning Rate: 6.91342e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.61440, Precision: 0.65352, Recall: 0.63050, Specificity: 0.63050, F1: 0.60453, AUROC: 0.67221, AUPRC: 0.68048
+Test results --- Accuracy: 0.87268, Precision: 0.86744, Recall: 0.87665 Specificity: 0.87665, F1: 0.87025, AUROC: 0.95230, AUPRC: 0.95003
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429, Specificity: 0.71429, F1: 0.67500, AUROC: 0.64286, AUPRC: 0.76619
+Test results --- Accuracy: 0.91667, Precision: 0.91667, Recall: 0.92857 Specificity: 0.92857, F1: 0.91608, AUROC: 1.00000, AUPRC: 1.00000
+
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : nh8_el12_dm128_df256_seed41<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(6), np.int64(10), np.int64(16), np.int64(19), np.int64(29), np.int64(30), np.int64(36), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(52), np.int64(68), np.int64(75), np.int64(79), np.int64(84), np.int64(88)]
+Number of validation subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19383, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19383, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(8), np.int64(14), np.int64(21), np.int64(24), np.int64(27), np.int64(33), np.int64(35), np.int64(47), np.int64(51), np.int64(55), np.int64(58), np.int64(59), np.int64(66), np.int64(72), np.int64(81), np.int64(85)]
+Number of test subjects: 16
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=16926, subjects=16, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=16926, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+
+Sample-level results: 
+Validation results --- Accuracy: 0.61435, Precision: 0.63101, Recall: 0.62435, Specificity: 0.62435, F1: 0.61186, AUROC: 0.68748, AUPRC: 0.69483
+Test results --- Accuracy: 0.84060, Precision: 0.84072, Recall: 0.82714 Specificity: 0.82714, F1: 0.83217, AUROC: 0.93470, AUPRC: 0.93379
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429, Specificity: 0.71429, F1: 0.67500, AUROC: 0.69048, AUPRC: 0.81984
+Test results --- Accuracy: 0.91667, Precision: 0.93750, Recall: 0.90000 Specificity: 0.90000, F1: 0.91111, AUROC: 0.97143, AUPRC: 0.98214
+
+Use GPU: cuda:0
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(3), np.int64(4), np.int64(5), np.int64(7), np.int64(8), np.int64(9), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(18), np.int64(21), np.int64(22), np.int64(24), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(33), np.int64(34), np.int64(35), np.int64(37), np.int64(39), np.int64(40), np.int64(41), np.int64(44), np.int64(45), np.int64(47), np.int64(50), np.int64(51), np.int64(54), np.int64(55), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(62), np.int64(64), np.int64(66), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(77), np.int64(78), np.int64(80), np.int64(81), np.int64(82), np.int64(83), np.int64(85), np.int64(87)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=54706, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=54706, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 54706, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=54706, seq_len=400, channels=19, montage=standard_1020
+
+>>>>>>>start training : nh8_el12_dm128_df256_seed42>>>>>>>>>>>>>>>>>>>>>>>>>>
+Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth
+Loaded 367 matched tensors from the pretraining checkpoint.
+Missing keys: ['classifier.weight', 'classifier.bias']
+Unexpected keys: []
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(3), np.int64(4), np.int64(5), np.int64(7), np.int64(8), np.int64(9), np.int64(11), np.int64(12), np.int64(13), np.int64(14), np.int64(18), np.int64(21), np.int64(22), np.int64(24), np.int64(25), np.int64(26), np.int64(27), np.int64(28), np.int64(33), np.int64(34), np.int64(35), np.int64(37), np.int64(39), np.int64(40), np.int64(41), np.int64(44), np.int64(45), np.int64(47), np.int64(50), np.int64(51), np.int64(54), np.int64(55), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(62), np.int64(64), np.int64(66), np.int64(69), np.int64(71), np.int64(72), np.int64(73), np.int64(74), np.int64(77), np.int64(78), np.int64(80), np.int64(81), np.int64(82), np.int64(83), np.int64(85), np.int64(87)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=54706, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=54706, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 54706, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=54706, seq_len=400, channels=19, montage=standard_1020
+
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(2), np.int64(15), np.int64(17), np.int64(20), np.int64(23), np.int64(31), np.int64(32), np.int64(38), np.int64(53), np.int64(56), np.int64(61), np.int64(63), np.int64(65), np.int64(67), np.int64(70), np.int64(76), np.int64(86)]
+Number of validation subjects: 17
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19848, subjects=17, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19848, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(6), np.int64(10), np.int64(16), np.int64(19), np.int64(29), np.int64(30), np.int64(36), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(52), np.int64(68), np.int64(75), np.int64(79), np.int64(84), np.int64(88)]
+Number of test subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19383, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19383, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+
+Training data summary:
+Dataset(flag=TRAIN), total trials: 54706, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=54706, seq_len=400, channels=19, montage=standard_1020
+
+Validation data summary:
+Dataset(flag=VAL), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+
+Test data summary:
+Dataset(flag=TEST), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+Total parameters: 3322498
+Utilized sampling rate(s): 200,100,50
+Sampling-rate embedding: True
+Temporal positional embedding: learnable
+Channel positional embedding: 3D
+Subject-level majority voting: True
+Subject-regularized training loss: True
+SWA enabled for supervised/downstream training: False
+	Epoch 1, iter 100/854, loss: 0.4015900, speed: 0.2025s/iter
+	Epoch 1, iter 200/854, loss: 0.4273258, speed: 0.2031s/iter
+	Epoch 1, iter 300/854, loss: 0.1314699, speed: 0.2034s/iter
+	Epoch 1, iter 400/854, loss: 0.0717184, speed: 0.2035s/iter
+	Epoch 1, iter 500/854, loss: 0.2021286, speed: 0.2037s/iter
+	Epoch 1, iter 600/854, loss: 0.1870546, speed: 0.2038s/iter
+	Epoch 1, iter 700/854, loss: 0.2566971, speed: 0.2039s/iter
+	Epoch 1, iter 800/854, loss: 0.0829874, speed: 0.2039s/iter
+Epoch: 1 cost time: 221.01s
+Epoch: 1, Steps: 854, | Train Loss: 0.32387 | Learning Rate: 1.00000e-04
+
+Sample-level results: 
+Validation results --- Accuracy: 0.68390, Precision: 0.68216, Recall: 0.68401, Specificity: 0.68401, F1: 0.68225, AUROC: 0.77634, AUPRC: 0.77083
+Test results --- Accuracy: 0.70149, Precision: 0.71957, Recall: 0.71100 Specificity: 0.71100, F1: 0.70014, AUROC: 0.78510, AUPRC: 0.78623
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.77381, Recall: 0.77381, Specificity: 0.77381, F1: 0.76923, AUROC: 0.83333, AUPRC: 0.86905
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.78571, AUPRC: 0.86905
+
+Metric score decreased (inf --> -0.682248).  Saving model ...
+
+------------------End of Epoch 1---------------------
+
+	Epoch 2, iter 100/854, loss: 0.3087814, speed: 0.2028s/iter
+	Epoch 2, iter 200/854, loss: 0.0654717, speed: 0.2032s/iter
+	Epoch 2, iter 300/854, loss: 0.1530725, speed: 0.2034s/iter
+	Epoch 2, iter 400/854, loss: 0.1470207, speed: 0.2035s/iter
+	Epoch 2, iter 500/854, loss: 0.0305527, speed: 0.2036s/iter
+	Epoch 2, iter 600/854, loss: 0.1251538, speed: 0.2037s/iter
+	Epoch 2, iter 700/854, loss: 0.1491269, speed: 0.2037s/iter
+	Epoch 2, iter 800/854, loss: 0.0969311, speed: 0.2038s/iter
+Epoch: 2 cost time: 220.78s
+Epoch: 2, Steps: 854, | Train Loss: 0.09369 | Learning Rate: 9.61940e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.66974, Precision: 0.68971, Recall: 0.68320, Specificity: 0.68320, F1: 0.66881, AUROC: 0.73995, AUPRC: 0.72430
+Test results --- Accuracy: 0.68163, Precision: 0.72844, Recall: 0.69742 Specificity: 0.69742, F1: 0.67441, AUROC: 0.77831, AUPRC: 0.78468
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.71250, Recall: 0.70238, Specificity: 0.70238, F1: 0.69048, AUROC: 0.83333, AUPRC: 0.86905
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.76190, AUPRC: 0.85009
+
+EarlyStopping counter: 1 out of 3
+------------------End of Epoch 2---------------------
+
+	Epoch 3, iter 100/854, loss: 0.1881489, speed: 0.2028s/iter
+	Epoch 3, iter 200/854, loss: 0.2284388, speed: 0.2031s/iter
+	Epoch 3, iter 300/854, loss: 0.0325667, speed: 0.2031s/iter
+	Epoch 3, iter 400/854, loss: 0.0725544, speed: 0.2032s/iter
+	Epoch 3, iter 500/854, loss: 0.0264264, speed: 0.2032s/iter
+	Epoch 3, iter 600/854, loss: 0.1022765, speed: 0.2032s/iter
+	Epoch 3, iter 700/854, loss: 0.0098208, speed: 0.2032s/iter
+	Epoch 3, iter 800/854, loss: 0.0054301, speed: 0.2031s/iter
+Epoch: 3 cost time: 220.01s
+Epoch: 3, Steps: 854, | Train Loss: 0.06063 | Learning Rate: 8.53553e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.65291, Precision: 0.67429, Recall: 0.66705, Specificity: 0.66705, F1: 0.65161, AUROC: 0.72986, AUPRC: 0.72039
+Test results --- Accuracy: 0.69241, Precision: 0.73508, Recall: 0.70732 Specificity: 0.70732, F1: 0.68655, AUROC: 0.79260, AUPRC: 0.80599
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.71250, Recall: 0.70238, Specificity: 0.70238, F1: 0.69048, AUROC: 0.80952, AUPRC: 0.85714
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.73810, AUPRC: 0.83929
+
+EarlyStopping counter: 2 out of 3
+------------------End of Epoch 3---------------------
+
+	Epoch 4, iter 100/854, loss: 0.0138118, speed: 0.2026s/iter
+	Epoch 4, iter 200/854, loss: 0.0893055, speed: 0.2028s/iter
+	Epoch 4, iter 300/854, loss: 0.0252408, speed: 0.2030s/iter
+	Epoch 4, iter 400/854, loss: 0.0067570, speed: 0.2031s/iter
+	Epoch 4, iter 500/854, loss: 0.0282594, speed: 0.2032s/iter
+	Epoch 4, iter 600/854, loss: 0.0829585, speed: 0.2033s/iter
+	Epoch 4, iter 700/854, loss: 0.0627342, speed: 0.2034s/iter
+	Epoch 4, iter 800/854, loss: 0.0369979, speed: 0.2035s/iter
+Epoch: 4 cost time: 220.71s
+Epoch: 4, Steps: 854, | Train Loss: 0.04338 | Learning Rate: 6.91342e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.67533, Precision: 0.68081, Recall: 0.68171, Specificity: 0.68171, F1: 0.67528, AUROC: 0.75636, AUPRC: 0.74775
+Test results --- Accuracy: 0.67234, Precision: 0.69144, Recall: 0.68240 Specificity: 0.68240, F1: 0.67043, AUROC: 0.77405, AUPRC: 0.78799
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.69231, Precision: 0.71250, Recall: 0.70238, Specificity: 0.70238, F1: 0.69048, AUROC: 0.83333, AUPRC: 0.86905
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.73810, AUPRC: 0.83734
+
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : nh8_el12_dm128_df256_seed42<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(2), np.int64(15), np.int64(17), np.int64(20), np.int64(23), np.int64(31), np.int64(32), np.int64(38), np.int64(53), np.int64(56), np.int64(61), np.int64(63), np.int64(65), np.int64(67), np.int64(70), np.int64(76), np.int64(86)]
+Number of validation subjects: 17
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19848, subjects=17, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19848, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(6), np.int64(10), np.int64(16), np.int64(19), np.int64(29), np.int64(30), np.int64(36), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(52), np.int64(68), np.int64(75), np.int64(79), np.int64(84), np.int64(88)]
+Number of test subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19383, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19383, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19383, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19383, seq_len=400, channels=19, montage=standard_1020
+
+Sample-level results: 
+Validation results --- Accuracy: 0.68390, Precision: 0.68216, Recall: 0.68401, Specificity: 0.68401, F1: 0.68225, AUROC: 0.77634, AUPRC: 0.77083
+Test results --- Accuracy: 0.70149, Precision: 0.71957, Recall: 0.71100 Specificity: 0.71100, F1: 0.70014, AUROC: 0.78510, AUPRC: 0.78623
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.77381, Recall: 0.77381, Specificity: 0.77381, F1: 0.76923, AUROC: 0.83333, AUPRC: 0.86905
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.78571, AUPRC: 0.86905
+
+Use GPU: cuda:0
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(14), np.int64(16), np.int64(18), np.int64(19), np.int64(21), np.int64(22), np.int64(24), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(33), np.int64(35), np.int64(36), np.int64(37), np.int64(40), np.int64(42), np.int64(43), np.int64(44), np.int64(45), np.int64(46), np.int64(47), np.int64(48), np.int64(49), np.int64(51), np.int64(52), np.int64(55), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(66), np.int64(68), np.int64(69), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(78), np.int64(79), np.int64(80), np.int64(81), np.int64(84), np.int64(85), np.int64(88)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=55744, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=55744, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 55744, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=55744, seq_len=400, channels=19, montage=standard_1020
+
+>>>>>>>start training : nh8_el12_dm128_df256_seed43>>>>>>>>>>>>>>>>>>>>>>>>>>
+Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth
+Loaded 367 matched tensors from the pretraining checkpoint.
+Missing keys: ['classifier.weight', 'classifier.bias']
+Unexpected keys: []
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(1), np.int64(5), np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10), np.int64(11), np.int64(14), np.int64(16), np.int64(18), np.int64(19), np.int64(21), np.int64(22), np.int64(24), np.int64(27), np.int64(28), np.int64(29), np.int64(30), np.int64(33), np.int64(35), np.int64(36), np.int64(37), np.int64(40), np.int64(42), np.int64(43), np.int64(44), np.int64(45), np.int64(46), np.int64(47), np.int64(48), np.int64(49), np.int64(51), np.int64(52), np.int64(55), np.int64(57), np.int64(58), np.int64(59), np.int64(60), np.int64(66), np.int64(68), np.int64(69), np.int64(72), np.int64(73), np.int64(74), np.int64(75), np.int64(78), np.int64(79), np.int64(80), np.int64(81), np.int64(84), np.int64(85), np.int64(88)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=55744, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=55744, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 55744, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=55744, seq_len=400, channels=19, montage=standard_1020
+
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(3), np.int64(4), np.int64(12), np.int64(13), np.int64(25), np.int64(26), np.int64(34), np.int64(39), np.int64(41), np.int64(50), np.int64(54), np.int64(62), np.int64(64), np.int64(71), np.int64(77), np.int64(82), np.int64(83), np.int64(87)]
+Number of validation subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=18345, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=18345, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(2), np.int64(15), np.int64(17), np.int64(20), np.int64(23), np.int64(31), np.int64(32), np.int64(38), np.int64(53), np.int64(56), np.int64(61), np.int64(63), np.int64(65), np.int64(67), np.int64(70), np.int64(76), np.int64(86)]
+Number of test subjects: 17
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19848, subjects=17, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19848, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+
+Training data summary:
+Dataset(flag=TRAIN), total trials: 55744, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=55744, seq_len=400, channels=19, montage=standard_1020
+
+Validation data summary:
+Dataset(flag=VAL), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+
+Test data summary:
+Dataset(flag=TEST), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+Total parameters: 3322498
+Utilized sampling rate(s): 200,100,50
+Sampling-rate embedding: True
+Temporal positional embedding: learnable
+Channel positional embedding: 3D
+Subject-level majority voting: True
+Subject-regularized training loss: True
+SWA enabled for supervised/downstream training: False
+	Epoch 1, iter 100/871, loss: 0.7843540, speed: 0.2032s/iter
+	Epoch 1, iter 200/871, loss: 0.1464290, speed: 0.2032s/iter
+	Epoch 1, iter 300/871, loss: 0.1848254, speed: 0.2034s/iter
+	Epoch 1, iter 400/871, loss: 0.2110907, speed: 0.2035s/iter
+	Epoch 1, iter 500/871, loss: 0.1082059, speed: 0.2036s/iter
+	Epoch 1, iter 600/871, loss: 0.2356759, speed: 0.2037s/iter
+	Epoch 1, iter 700/871, loss: 0.3141236, speed: 0.2038s/iter
+	Epoch 1, iter 800/871, loss: 0.1877993, speed: 0.2038s/iter
+Epoch: 1 cost time: 223.45s
+Epoch: 1, Steps: 871, | Train Loss: 0.29411 | Learning Rate: 1.00000e-04
+
+Sample-level results: 
+Validation results --- Accuracy: 0.80627, Precision: 0.83426, Recall: 0.80849, Specificity: 0.80849, F1: 0.80287, AUROC: 0.89494, AUPRC: 0.89695
+Test results --- Accuracy: 0.64787, Precision: 0.66734, Recall: 0.66130 Specificity: 0.66130, F1: 0.64680, AUROC: 0.68933, AUPRC: 0.67715
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.73810, AUPRC: 0.83734
+
+Metric score decreased (inf --> -0.802869).  Saving model ...
+
+------------------End of Epoch 1---------------------
+
+	Epoch 2, iter 100/871, loss: 0.1470361, speed: 0.2029s/iter
+	Epoch 2, iter 200/871, loss: 0.1333293, speed: 0.2034s/iter
+	Epoch 2, iter 300/871, loss: 0.0341570, speed: 0.2036s/iter
+	Epoch 2, iter 400/871, loss: 0.1205195, speed: 0.2038s/iter
+	Epoch 2, iter 500/871, loss: 0.1900252, speed: 0.2039s/iter
+	Epoch 2, iter 600/871, loss: 0.1470602, speed: 0.2040s/iter
+	Epoch 2, iter 700/871, loss: 0.0494894, speed: 0.2040s/iter
+	Epoch 2, iter 800/871, loss: 0.0244340, speed: 0.2041s/iter
+Epoch: 2 cost time: 223.64s
+Epoch: 2, Steps: 871, | Train Loss: 0.09774 | Learning Rate: 9.61940e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.80785, Precision: 0.83840, Recall: 0.81015, Specificity: 0.81015, F1: 0.80418, AUROC: 0.89684, AUPRC: 0.89823
+Test results --- Accuracy: 0.67100, Precision: 0.70361, Recall: 0.68864 Specificity: 0.68864, F1: 0.66822, AUROC: 0.71805, AUPRC: 0.70454
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.80952, AUPRC: 0.86871
+
+Metric score decreased (-0.802869 --> -0.804178).  Saving model ...
+
+------------------End of Epoch 2---------------------
+
+	Epoch 3, iter 100/871, loss: 0.0187085, speed: 0.2052s/iter
+	Epoch 3, iter 200/871, loss: 0.0116773, speed: 0.2046s/iter
+	Epoch 3, iter 300/871, loss: 0.0347808, speed: 0.2044s/iter
+	Epoch 3, iter 400/871, loss: 0.0873295, speed: 0.2044s/iter
+	Epoch 3, iter 500/871, loss: 0.0213322, speed: 0.2044s/iter
+	Epoch 3, iter 600/871, loss: 0.0246869, speed: 0.2045s/iter
+	Epoch 3, iter 700/871, loss: 0.1514871, speed: 0.2046s/iter
+	Epoch 3, iter 800/871, loss: 0.0885040, speed: 0.2046s/iter
+Epoch: 3 cost time: 224.11s
+Epoch: 3, Steps: 871, | Train Loss: 0.06798 | Learning Rate: 8.53553e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.81924, Precision: 0.84228, Recall: 0.82123, Specificity: 0.82123, F1: 0.81676, AUROC: 0.90098, AUPRC: 0.89902
+Test results --- Accuracy: 0.68314, Precision: 0.70610, Recall: 0.69760 Specificity: 0.69760, F1: 0.68197, AUROC: 0.72278, AUPRC: 0.70391
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 0.97619, AUPRC: 0.98214
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.83333, AUPRC: 0.88571
+
+Metric score decreased (-0.804178 --> -0.816756).  Saving model ...
+
+------------------End of Epoch 3---------------------
+
+	Epoch 4, iter 100/871, loss: 0.0713505, speed: 0.2038s/iter
+	Epoch 4, iter 200/871, loss: 0.0862804, speed: 0.2041s/iter
+	Epoch 4, iter 300/871, loss: 0.0338727, speed: 0.2042s/iter
+	Epoch 4, iter 400/871, loss: 0.0927483, speed: 0.2042s/iter
+	Epoch 4, iter 500/871, loss: 0.1633935, speed: 0.2043s/iter
+	Epoch 4, iter 600/871, loss: 0.0135206, speed: 0.2043s/iter
+	Epoch 4, iter 700/871, loss: 0.0997431, speed: 0.2043s/iter
+	Epoch 4, iter 800/871, loss: 0.0536542, speed: 0.2043s/iter
+Epoch: 4 cost time: 223.92s
+Epoch: 4, Steps: 871, | Train Loss: 0.04973 | Learning Rate: 6.91342e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.82022, Precision: 0.84523, Recall: 0.82229, Specificity: 0.82229, F1: 0.81753, AUROC: 0.90565, AUPRC: 0.90668
+Test results --- Accuracy: 0.66546, Precision: 0.68471, Recall: 0.67867 Specificity: 0.67867, F1: 0.66458, AUROC: 0.70523, AUPRC: 0.68885
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.76190, AUPRC: 0.85204
+
+Metric score decreased (-0.816756 --> -0.817535).  Saving model ...
+
+------------------End of Epoch 4---------------------
+
+	Epoch 5, iter 100/871, loss: 0.0633443, speed: 0.2035s/iter
+	Epoch 5, iter 200/871, loss: 0.0142132, speed: 0.2038s/iter
+	Epoch 5, iter 300/871, loss: 0.0080379, speed: 0.2041s/iter
+	Epoch 5, iter 400/871, loss: 0.0074590, speed: 0.2041s/iter
+	Epoch 5, iter 500/871, loss: 0.0110847, speed: 0.2042s/iter
+	Epoch 5, iter 600/871, loss: 0.0365424, speed: 0.2043s/iter
+	Epoch 5, iter 700/871, loss: 0.0926316, speed: 0.2043s/iter
+	Epoch 5, iter 800/871, loss: 0.0180306, speed: 0.2043s/iter
+Epoch: 5 cost time: 223.82s
+Epoch: 5, Steps: 871, | Train Loss: 0.03952 | Learning Rate: 5.00000e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.81221, Precision: 0.84228, Recall: 0.81449, Specificity: 0.81449, F1: 0.80873, AUROC: 0.89824, AUPRC: 0.89752
+Test results --- Accuracy: 0.65966, Precision: 0.68885, Recall: 0.67644 Specificity: 0.67644, F1: 0.65720, AUROC: 0.70229, AUPRC: 0.68595
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.69231, Precision: 0.80000, Recall: 0.71429 Specificity: 0.71429, F1: 0.67500, AUROC: 0.76190, AUPRC: 0.85204
+
+EarlyStopping counter: 1 out of 3
+------------------End of Epoch 5---------------------
+
+	Epoch 6, iter 100/871, loss: 0.1142643, speed: 0.2035s/iter
+	Epoch 6, iter 200/871, loss: 0.0534780, speed: 0.2036s/iter
+	Epoch 6, iter 300/871, loss: 0.0871679, speed: 0.2037s/iter
+	Epoch 6, iter 400/871, loss: 0.0009615, speed: 0.2038s/iter
+	Epoch 6, iter 500/871, loss: 0.0240581, speed: 0.2038s/iter
+	Epoch 6, iter 600/871, loss: 0.0086020, speed: 0.2039s/iter
+	Epoch 6, iter 700/871, loss: 0.0060313, speed: 0.2039s/iter
+	Epoch 6, iter 800/871, loss: 0.0027699, speed: 0.2040s/iter
+Epoch: 6 cost time: 223.54s
+Epoch: 6, Steps: 871, | Train Loss: 0.03148 | Learning Rate: 3.08658e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.80621, Precision: 0.84099, Recall: 0.80867, Specificity: 0.80867, F1: 0.80197, AUROC: 0.89926, AUPRC: 0.89735
+Test results --- Accuracy: 0.67548, Precision: 0.71301, Recall: 0.69440 Specificity: 0.69440, F1: 0.67201, AUROC: 0.71001, AUPRC: 0.68770
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 0.97619, AUPRC: 0.98214
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.78571, AUPRC: 0.85962
+
+EarlyStopping counter: 2 out of 3
+------------------End of Epoch 6---------------------
+
+	Epoch 7, iter 100/871, loss: 0.0008261, speed: 0.2035s/iter
+	Epoch 7, iter 200/871, loss: 0.0146317, speed: 0.2037s/iter
+	Epoch 7, iter 300/871, loss: 0.0099834, speed: 0.2039s/iter
+	Epoch 7, iter 400/871, loss: 0.0172866, speed: 0.2040s/iter
+	Epoch 7, iter 500/871, loss: 0.0008498, speed: 0.2040s/iter
+	Epoch 7, iter 600/871, loss: 0.0015803, speed: 0.2040s/iter
+	Epoch 7, iter 700/871, loss: 0.0109739, speed: 0.2040s/iter
+	Epoch 7, iter 800/871, loss: 0.0177016, speed: 0.2040s/iter
+Epoch: 7 cost time: 223.38s
+Epoch: 7, Steps: 871, | Train Loss: 0.02581 | Learning Rate: 1.46447e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.81117, Precision: 0.84274, Recall: 0.81351, Specificity: 0.81351, F1: 0.80748, AUROC: 0.90263, AUPRC: 0.90126
+Test results --- Accuracy: 0.66964, Precision: 0.70321, Recall: 0.68757 Specificity: 0.68757, F1: 0.66666, AUROC: 0.70681, AUPRC: 0.68668
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.80952, AUPRC: 0.86871
+
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : nh8_el12_dm128_df256_seed43<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(3), np.int64(4), np.int64(12), np.int64(13), np.int64(25), np.int64(26), np.int64(34), np.int64(39), np.int64(41), np.int64(50), np.int64(54), np.int64(62), np.int64(64), np.int64(71), np.int64(77), np.int64(82), np.int64(83), np.int64(87)]
+Number of validation subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=18345, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=18345, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(2), np.int64(15), np.int64(17), np.int64(20), np.int64(23), np.int64(31), np.int64(32), np.int64(38), np.int64(53), np.int64(56), np.int64(61), np.int64(63), np.int64(65), np.int64(67), np.int64(70), np.int64(76), np.int64(86)]
+Number of test subjects: 17
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19848, subjects=17, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19848, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19848, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19848, seq_len=400, channels=19, montage=standard_1020
+
+Sample-level results: 
+Validation results --- Accuracy: 0.82022, Precision: 0.84523, Recall: 0.82229, Specificity: 0.82229, F1: 0.81753, AUROC: 0.90565, AUPRC: 0.90668
+Test results --- Accuracy: 0.66546, Precision: 0.68471, Recall: 0.67867 Specificity: 0.67867, F1: 0.66458, AUROC: 0.70523, AUPRC: 0.68885
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571, Specificity: 0.78571, F1: 0.76364, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.76923, Precision: 0.83333, Recall: 0.78571 Specificity: 0.78571, F1: 0.76364, AUROC: 0.76190, AUPRC: 0.85204
+
+Use GPU: cuda:0
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(2), np.int64(6), np.int64(8), np.int64(10), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(19), np.int64(20), np.int64(21), np.int64(23), np.int64(24), np.int64(27), np.int64(29), np.int64(30), np.int64(31), np.int64(32), np.int64(33), np.int64(35), np.int64(36), np.int64(38), np.int64(42), np.int64(43), np.int64(46), np.int64(47), np.int64(48), np.int64(49), np.int64(51), np.int64(52), np.int64(53), np.int64(55), np.int64(56), np.int64(58), np.int64(59), np.int64(61), np.int64(63), np.int64(65), np.int64(66), np.int64(67), np.int64(68), np.int64(70), np.int64(72), np.int64(75), np.int64(76), np.int64(79), np.int64(81), np.int64(84), np.int64(85), np.int64(86), np.int64(88)]
+Number of training subjects: 51
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=56157, subjects=51, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=56157, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 56157, total subjects: 38, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=56157, seq_len=400, channels=19, montage=standard_1020
+
+>>>>>>>start training : nh8_el12_dm128_df256_seed44>>>>>>>>>>>>>>>>>>>>>>>>>>
+Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth
+Loaded 367 matched tensors from the pretraining checkpoint.
+Missing keys: ['classifier.weight', 'classifier.bias']
+Unexpected keys: []
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(2), np.int64(6), np.int64(8), np.int64(10), np.int64(14), np.int64(15), np.int64(16), np.int64(17), np.int64(19), np.int64(20), np.int64(21), np.int64(23), np.int64(24), np.int64(27), np.int64(29), np.int64(30), np.int64(31), np.int64(32), np.int64(33), np.int64(35), np.int64(36), np.int64(38), np.int64(42), np.int64(43), np.int64(46), np.int64(47), np.int64(48), np.int64(49), np.int64(51), np.int64(52), np.int64(53), np.int64(55), np.int64(56), np.int64(58), np.int64(59), np.int64(61), np.int64(63), np.int64(65), np.int64(66), np.int64(67), np.int64(68), np.int64(70), np.int64(72), np.int64(75), np.int64(76), np.int64(79), np.int64(81), np.int64(84), np.int64(85), np.int64(86), np.int64(88)]
+Number of training subjects: 51
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=56157, subjects=51, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=56157, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 56157, total subjects: 38, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=56157, seq_len=400, channels=19, montage=standard_1020
+
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(1), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(18), np.int64(22), np.int64(28), np.int64(37), np.int64(40), np.int64(44), np.int64(45), np.int64(57), np.int64(60), np.int64(69), np.int64(73), np.int64(74), np.int64(78), np.int64(80)]
+Number of validation subjects: 19
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19435, subjects=19, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19435, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(3), np.int64(4), np.int64(12), np.int64(13), np.int64(25), np.int64(26), np.int64(34), np.int64(39), np.int64(41), np.int64(50), np.int64(54), np.int64(62), np.int64(64), np.int64(71), np.int64(77), np.int64(82), np.int64(83), np.int64(87)]
+Number of test subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=18345, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=18345, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+
+Training data summary:
+Dataset(flag=TRAIN), total trials: 56157, total subjects: 38, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=56157, seq_len=400, channels=19, montage=standard_1020
+
+Validation data summary:
+Dataset(flag=VAL), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+
+Test data summary:
+Dataset(flag=TEST), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+Total parameters: 3322498
+Utilized sampling rate(s): 200,100,50
+Sampling-rate embedding: True
+Temporal positional embedding: learnable
+Channel positional embedding: 3D
+Subject-level majority voting: True
+Subject-regularized training loss: True
+SWA enabled for supervised/downstream training: False
+	Epoch 1, iter 100/877, loss: 0.6848682, speed: 0.2027s/iter
+	Epoch 1, iter 200/877, loss: 0.5023132, speed: 0.2030s/iter
+	Epoch 1, iter 300/877, loss: 0.3715696, speed: 0.2033s/iter
+	Epoch 1, iter 400/877, loss: 0.4883825, speed: 0.2036s/iter
+	Epoch 1, iter 500/877, loss: 0.2138778, speed: 0.2037s/iter
+	Epoch 1, iter 600/877, loss: 0.2885210, speed: 0.2038s/iter
+	Epoch 1, iter 700/877, loss: 0.4015015, speed: 0.2038s/iter
+	Epoch 1, iter 800/877, loss: 0.3655260, speed: 0.2039s/iter
+Epoch: 1 cost time: 224.29s
+Epoch: 1, Steps: 877, | Train Loss: 0.40561 | Learning Rate: 1.00000e-04
+
+Sample-level results: 
+Validation results --- Accuracy: 0.84266, Precision: 0.86131, Recall: 0.83237, Specificity: 0.83237, F1: 0.83671, AUROC: 0.94468, AUPRC: 0.94431
+Test results --- Accuracy: 0.82862, Precision: 0.83471, Recall: 0.82965 Specificity: 0.82965, F1: 0.82811, AUROC: 0.88642, AUPRC: 0.86781
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.92857, Precision: 0.94444, Recall: 0.91667, Specificity: 0.91667, F1: 0.92513, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.84615, Precision: 0.87500, Recall: 0.85714 Specificity: 0.85714, F1: 0.84524, AUROC: 0.92857, AUPRC: 0.95714
+
+Metric score decreased (inf --> -0.836708).  Saving model ...
+
+------------------End of Epoch 1---------------------
+
+	Epoch 2, iter 100/877, loss: 0.2869660, speed: 0.2031s/iter
+	Epoch 2, iter 200/877, loss: 0.3181179, speed: 0.2035s/iter
+	Epoch 2, iter 300/877, loss: 0.1546495, speed: 0.2037s/iter
+	Epoch 2, iter 400/877, loss: 0.2356296, speed: 0.2038s/iter
+	Epoch 2, iter 500/877, loss: 0.0754993, speed: 0.2038s/iter
+	Epoch 2, iter 600/877, loss: 0.2558565, speed: 0.2038s/iter
+	Epoch 2, iter 700/877, loss: 0.1367490, speed: 0.2039s/iter
+	Epoch 2, iter 800/877, loss: 0.0798597, speed: 0.2039s/iter
+Epoch: 2 cost time: 224.22s
+Epoch: 2, Steps: 877, | Train Loss: 0.15739 | Learning Rate: 9.61940e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.80823, Precision: 0.82264, Recall: 0.79795, Specificity: 0.79795, F1: 0.80122, AUROC: 0.91709, AUPRC: 0.91525
+Test results --- Accuracy: 0.82017, Precision: 0.82628, Recall: 0.82121 Specificity: 0.82121, F1: 0.81962, AUROC: 0.88472, AUPRC: 0.87550
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 1.00000, Precision: 1.00000, Recall: 1.00000, Specificity: 1.00000, F1: 1.00000, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.84615, Precision: 0.87500, Recall: 0.85714 Specificity: 0.85714, F1: 0.84524, AUROC: 0.95238, AUPRC: 0.96825
+
+EarlyStopping counter: 1 out of 3
+------------------End of Epoch 2---------------------
+
+	Epoch 3, iter 100/877, loss: 0.2762383, speed: 0.2029s/iter
+	Epoch 3, iter 200/877, loss: 0.1484974, speed: 0.2034s/iter
+	Epoch 3, iter 300/877, loss: 0.1509500, speed: 0.2035s/iter
+	Epoch 3, iter 400/877, loss: 0.0591324, speed: 0.2037s/iter
+	Epoch 3, iter 500/877, loss: 0.0086466, speed: 0.2038s/iter
+	Epoch 3, iter 600/877, loss: 0.0255898, speed: 0.2038s/iter
+	Epoch 3, iter 700/877, loss: 0.0126743, speed: 0.2038s/iter
+	Epoch 3, iter 800/877, loss: 0.0784710, speed: 0.2039s/iter
+Epoch: 3 cost time: 224.10s
+Epoch: 3, Steps: 877, | Train Loss: 0.11323 | Learning Rate: 8.53553e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.81219, Precision: 0.83549, Recall: 0.79989, Specificity: 0.79989, F1: 0.80342, AUROC: 0.93071, AUPRC: 0.92935
+Test results --- Accuracy: 0.82017, Precision: 0.82499, Recall: 0.82110 Specificity: 0.82110, F1: 0.81976, AUROC: 0.87143, AUPRC: 0.85510
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.92857, Precision: 0.94444, Recall: 0.91667, Specificity: 0.91667, F1: 0.92513, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.84615, Precision: 0.87500, Recall: 0.85714 Specificity: 0.85714, F1: 0.84524, AUROC: 0.92857, AUPRC: 0.95714
+
+EarlyStopping counter: 2 out of 3
+------------------End of Epoch 3---------------------
+
+	Epoch 4, iter 100/877, loss: 0.0220513, speed: 0.2032s/iter
+	Epoch 4, iter 200/877, loss: 0.0096834, speed: 0.2032s/iter
+	Epoch 4, iter 300/877, loss: 0.0284965, speed: 0.2034s/iter
+	Epoch 4, iter 400/877, loss: 0.1382940, speed: 0.2036s/iter
+	Epoch 4, iter 500/877, loss: 0.1518159, speed: 0.2037s/iter
+	Epoch 4, iter 600/877, loss: 0.0132986, speed: 0.2038s/iter
+	Epoch 4, iter 700/877, loss: 0.0611900, speed: 0.2038s/iter
+	Epoch 4, iter 800/877, loss: 0.0091811, speed: 0.2039s/iter
+Epoch: 4 cost time: 224.19s
+Epoch: 4, Steps: 877, | Train Loss: 0.08457 | Learning Rate: 6.91342e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.82784, Precision: 0.84497, Recall: 0.81746, Specificity: 0.81746, F1: 0.82135, AUROC: 0.93577, AUPRC: 0.93558
+Test results --- Accuracy: 0.81788, Precision: 0.82290, Recall: 0.81883 Specificity: 0.81883, F1: 0.81744, AUROC: 0.86834, AUPRC: 0.84124
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.92857, Precision: 0.94444, Recall: 0.91667, Specificity: 0.91667, F1: 0.92513, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.84615, Precision: 0.87500, Recall: 0.85714 Specificity: 0.85714, F1: 0.84524, AUROC: 0.92857, AUPRC: 0.95714
+
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : nh8_el12_dm128_df256_seed44<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(1), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(18), np.int64(22), np.int64(28), np.int64(37), np.int64(40), np.int64(44), np.int64(45), np.int64(57), np.int64(60), np.int64(69), np.int64(73), np.int64(74), np.int64(78), np.int64(80)]
+Number of validation subjects: 19
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=19435, subjects=19, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19435, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(3), np.int64(4), np.int64(12), np.int64(13), np.int64(25), np.int64(26), np.int64(34), np.int64(39), np.int64(41), np.int64(50), np.int64(54), np.int64(62), np.int64(64), np.int64(71), np.int64(77), np.int64(82), np.int64(83), np.int64(87)]
+Number of test subjects: 18
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=18345, subjects=18, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=18345, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 18345, total subjects: 13, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=18345, seq_len=400, channels=19, montage=standard_1020
+
+Sample-level results: 
+Validation results --- Accuracy: 0.84266, Precision: 0.86131, Recall: 0.83237, Specificity: 0.83237, F1: 0.83671, AUROC: 0.94468, AUPRC: 0.94431
+Test results --- Accuracy: 0.82862, Precision: 0.83471, Recall: 0.82965 Specificity: 0.82965, F1: 0.82811, AUROC: 0.88642, AUPRC: 0.86781
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.92857, Precision: 0.94444, Recall: 0.91667, Specificity: 0.91667, F1: 0.92513, AUROC: 1.00000, AUPRC: 1.00000
+Test results --- Accuracy: 0.84615, Precision: 0.87500, Recall: 0.85714 Specificity: 0.85714, F1: 0.84524, AUROC: 0.92857, AUPRC: 0.95714
+
+Use GPU: cuda:0
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(2), np.int64(3), np.int64(4), np.int64(6), np.int64(10), np.int64(12), np.int64(13), np.int64(15), np.int64(16), np.int64(17), np.int64(19), np.int64(20), np.int64(23), np.int64(25), np.int64(26), np.int64(29), np.int64(30), np.int64(31), np.int64(32), np.int64(34), np.int64(36), np.int64(38), np.int64(39), np.int64(41), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(50), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(65), np.int64(67), np.int64(68), np.int64(70), np.int64(71), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(82), np.int64(83), np.int64(84), np.int64(86), np.int64(87), np.int64(88)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=57576, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=57576, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 57576, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57576, seq_len=400, channels=19, montage=standard_1020
+
+>>>>>>>start training : nh8_el12_dm128_df256_seed45>>>>>>>>>>>>>>>>>>>>>>>>>>
+Loading pretraining checkpoint from ./checkpoints/LEAD/pretrain/LEAD/P-11-b1024-p50-g16-learnable-3D/nh8_el12_dm128_df256_seed41/checkpoint.pth
+Loaded 367 matched tensors from the pretraining checkpoint.
+Missing keys: ['classifier.weight', 'classifier.bias']
+Unexpected keys: []
+Loading TRAIN samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Training ids: [np.int64(2), np.int64(3), np.int64(4), np.int64(6), np.int64(10), np.int64(12), np.int64(13), np.int64(15), np.int64(16), np.int64(17), np.int64(19), np.int64(20), np.int64(23), np.int64(25), np.int64(26), np.int64(29), np.int64(30), np.int64(31), np.int64(32), np.int64(34), np.int64(36), np.int64(38), np.int64(39), np.int64(41), np.int64(42), np.int64(43), np.int64(46), np.int64(48), np.int64(49), np.int64(50), np.int64(52), np.int64(53), np.int64(54), np.int64(56), np.int64(61), np.int64(62), np.int64(63), np.int64(64), np.int64(65), np.int64(67), np.int64(68), np.int64(70), np.int64(71), np.int64(75), np.int64(76), np.int64(77), np.int64(79), np.int64(82), np.int64(83), np.int64(84), np.int64(86), np.int64(87), np.int64(88)]
+Number of training subjects: 53
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TRAIN, trials=57576, subjects=53, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=57576, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TRAIN), total trials: 57576, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57576, seq_len=400, channels=19, montage=standard_1020
+
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(8), np.int64(14), np.int64(21), np.int64(24), np.int64(27), np.int64(33), np.int64(35), np.int64(47), np.int64(51), np.int64(55), np.int64(58), np.int64(59), np.int64(66), np.int64(72), np.int64(81), np.int64(85)]
+Number of validation subjects: 16
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=16926, subjects=16, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=16926, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(1), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(18), np.int64(22), np.int64(28), np.int64(37), np.int64(40), np.int64(44), np.int64(45), np.int64(57), np.int64(60), np.int64(69), np.int64(73), np.int64(74), np.int64(78), np.int64(80)]
+Number of test subjects: 19
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19435, subjects=19, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19435, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+
+Training data summary:
+Dataset(flag=TRAIN), total trials: 57576, total subjects: 39, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=57576, seq_len=400, channels=19, montage=standard_1020
+
+Validation data summary:
+Dataset(flag=VAL), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+
+Test data summary:
+Dataset(flag=TEST), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+Total parameters: 3322498
+Utilized sampling rate(s): 200,100,50
+Sampling-rate embedding: True
+Temporal positional embedding: learnable
+Channel positional embedding: 3D
+Subject-level majority voting: True
+Subject-regularized training loss: True
+SWA enabled for supervised/downstream training: False
+	Epoch 1, iter 100/899, loss: 0.7322305, speed: 0.2033s/iter
+	Epoch 1, iter 200/899, loss: 0.8722545, speed: 0.2036s/iter
+	Epoch 1, iter 300/899, loss: 0.2656719, speed: 0.2037s/iter
+	Epoch 1, iter 400/899, loss: 0.3494620, speed: 0.2037s/iter
+	Epoch 1, iter 500/899, loss: 0.2881542, speed: 0.2038s/iter
+	Epoch 1, iter 600/899, loss: 0.3586563, speed: 0.2040s/iter
+	Epoch 1, iter 700/899, loss: 0.2251989, speed: 0.2040s/iter
+	Epoch 1, iter 800/899, loss: 0.1181521, speed: 0.2040s/iter
+Epoch: 1 cost time: 227.10s
+Epoch: 1, Steps: 899, | Train Loss: 0.46798 | Learning Rate: 1.00000e-04
+
+Sample-level results: 
+Validation results --- Accuracy: 0.84202, Precision: 0.83648, Recall: 0.83721, Specificity: 0.83721, F1: 0.83684, AUROC: 0.93187, AUPRC: 0.93013
+Test results --- Accuracy: 0.78976, Precision: 0.80752, Recall: 0.77794 Specificity: 0.77794, F1: 0.78065, AUROC: 0.91082, AUPRC: 0.90820
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.91667, Precision: 0.93750, Recall: 0.90000, Specificity: 0.90000, F1: 0.91111, AUROC: 0.97143, AUPRC: 0.98214
+Test results --- Accuracy: 0.85714, Precision: 0.85417, Recall: 0.85417 Specificity: 0.85417, F1: 0.85417, AUROC: 0.95833, AUPRC: 0.97500
+
+Metric score decreased (inf --> -0.836838).  Saving model ...
+
+------------------End of Epoch 1---------------------
+
+	Epoch 2, iter 100/899, loss: 0.0625619, speed: 0.2032s/iter
+	Epoch 2, iter 200/899, loss: 0.1103875, speed: 0.2036s/iter
+	Epoch 2, iter 300/899, loss: 0.3356157, speed: 0.2036s/iter
+	Epoch 2, iter 400/899, loss: 0.0416026, speed: 0.2035s/iter
+	Epoch 2, iter 500/899, loss: 0.4767546, speed: 0.2036s/iter
+	Epoch 2, iter 600/899, loss: 0.0452097, speed: 0.2037s/iter
+	Epoch 2, iter 700/899, loss: 0.0313735, speed: 0.2037s/iter
+	Epoch 2, iter 800/899, loss: 0.1179312, speed: 0.2037s/iter
+Epoch: 2 cost time: 226.65s
+Epoch: 2, Steps: 899, | Train Loss: 0.17456 | Learning Rate: 9.61940e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.83150, Precision: 0.82771, Recall: 0.82169, Specificity: 0.82169, F1: 0.82426, AUROC: 0.91811, AUPRC: 0.91944
+Test results --- Accuracy: 0.78009, Precision: 0.79791, Recall: 0.76789 Specificity: 0.76789, F1: 0.77021, AUROC: 0.89703, AUPRC: 0.89762
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.91667, Precision: 0.93750, Recall: 0.90000, Specificity: 0.90000, F1: 0.91111, AUROC: 0.94286, AUPRC: 0.96173
+Test results --- Accuracy: 0.78571, Precision: 0.78889, Recall: 0.77083 Specificity: 0.77083, F1: 0.77540, AUROC: 0.95833, AUPRC: 0.97500
+
+EarlyStopping counter: 1 out of 3
+------------------End of Epoch 2---------------------
+
+	Epoch 3, iter 100/899, loss: 0.1579452, speed: 0.2029s/iter
+	Epoch 3, iter 200/899, loss: 0.0774265, speed: 0.2030s/iter
+	Epoch 3, iter 300/899, loss: 0.0178539, speed: 0.2032s/iter
+	Epoch 3, iter 400/899, loss: 0.1133252, speed: 0.2033s/iter
+	Epoch 3, iter 500/899, loss: 0.0783042, speed: 0.2033s/iter
+	Epoch 3, iter 600/899, loss: 0.0834300, speed: 0.2034s/iter
+	Epoch 3, iter 700/899, loss: 0.2490640, speed: 0.2034s/iter
+	Epoch 3, iter 800/899, loss: 0.1321669, speed: 0.2034s/iter
+Epoch: 3 cost time: 226.54s
+Epoch: 3, Steps: 899, | Train Loss: 0.11965 | Learning Rate: 8.53553e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.82311, Precision: 0.81679, Recall: 0.81862, Specificity: 0.81862, F1: 0.81765, AUROC: 0.91416, AUPRC: 0.91000
+Test results --- Accuracy: 0.76465, Precision: 0.78876, Recall: 0.75034 Specificity: 0.75034, F1: 0.75149, AUROC: 0.89904, AUPRC: 0.89249
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.83333, Precision: 0.82857, Recall: 0.82857, Specificity: 0.82857, F1: 0.82857, AUROC: 0.97143, AUPRC: 0.98214
+Test results --- Accuracy: 0.78571, Precision: 0.78889, Recall: 0.77083 Specificity: 0.77083, F1: 0.77540, AUROC: 0.95833, AUPRC: 0.97500
+
+EarlyStopping counter: 2 out of 3
+------------------End of Epoch 3---------------------
+
+	Epoch 4, iter 100/899, loss: 0.0450589, speed: 0.2029s/iter
+	Epoch 4, iter 200/899, loss: 0.0057650, speed: 0.2031s/iter
+	Epoch 4, iter 300/899, loss: 0.0816549, speed: 0.2033s/iter
+	Epoch 4, iter 400/899, loss: 0.0536413, speed: 0.2034s/iter
+	Epoch 4, iter 500/899, loss: 0.0315917, speed: 0.2034s/iter
+	Epoch 4, iter 600/899, loss: 0.0913552, speed: 0.2035s/iter
+	Epoch 4, iter 700/899, loss: 0.0266114, speed: 0.2035s/iter
+	Epoch 4, iter 800/899, loss: 0.0736009, speed: 0.2034s/iter
+Epoch: 4 cost time: 226.42s
+Epoch: 4, Steps: 899, | Train Loss: 0.08813 | Learning Rate: 6.91342e-05
+
+Sample-level results: 
+Validation results --- Accuracy: 0.84025, Precision: 0.83411, Recall: 0.83938, Specificity: 0.83938, F1: 0.83622, AUROC: 0.92844, AUPRC: 0.92580
+Test results --- Accuracy: 0.77227, Precision: 0.78489, Recall: 0.76123 Specificity: 0.76123, F1: 0.76343, AUROC: 0.88650, AUPRC: 0.88219
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.83333, Precision: 0.82857, Recall: 0.82857, Specificity: 0.82857, F1: 0.82857, AUROC: 0.97143, AUPRC: 0.98214
+Test results --- Accuracy: 0.78571, Precision: 0.78889, Recall: 0.77083 Specificity: 0.77083, F1: 0.77540, AUROC: 0.91667, AUPRC: 0.95833
+
+EarlyStopping counter: 3 out of 3
+Early stopping
+>>>>>>>testing : nh8_el12_dm128_df256_seed45<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Loading VAL samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Validation ids: [np.int64(8), np.int64(14), np.int64(21), np.int64(24), np.int64(27), np.int64(33), np.int64(35), np.int64(47), np.int64(51), np.int64(55), np.int64(58), np.int64(59), np.int64(66), np.int64(72), np.int64(81), np.int64(85)]
+Number of validation subjects: 16
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=VAL, trials=16926, subjects=16, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=16926, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=VAL), total trials: 16926, total subjects: 12, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=16926, seq_len=400, channels=19, montage=standard_1020
+
+Loading TEST samples from EEG datasets...
+Datasets used: ['ADFTD-RS']
+Test ids: [np.int64(1), np.int64(5), np.int64(7), np.int64(9), np.int64(11), np.int64(18), np.int64(22), np.int64(28), np.int64(37), np.int64(40), np.int64(44), np.int64(45), np.int64(57), np.int64(60), np.int64(69), np.int64(73), np.int64(74), np.int64(78), np.int64(80)]
+Number of test subjects: 19
+Delete FTD subjects (label=2) for AD vs HC classification
+[ADFTD-RS] flag=TEST, trials=19435, subjects=19, T=400, C=19, montage=standard_1020
+[dataset_id=2, compatibility_group=0] ADFTD-RS: trials=19435, T=400, C=19, montage=standard_1020, sampling_rates=[200, 100, 50]
+Dataset(flag=TEST), total trials: 19435, total subjects: 14, total datasets: 1.
+  dataset_id=2, compatibility_group=0, name=ADFTD-RS, trials=19435, seq_len=400, channels=19, montage=standard_1020
+
+Sample-level results: 
+Validation results --- Accuracy: 0.84202, Precision: 0.83648, Recall: 0.83721, Specificity: 0.83721, F1: 0.83684, AUROC: 0.93187, AUPRC: 0.93013
+Test results --- Accuracy: 0.78976, Precision: 0.80752, Recall: 0.77794 Specificity: 0.77794, F1: 0.78065, AUROC: 0.91082, AUPRC: 0.90820
+
+Subject-level results after majority voting: 
+Validation results --- Accuracy: 0.91667, Precision: 0.93750, Recall: 0.90000, Specificity: 0.90000, F1: 0.91111, AUROC: 0.97143, AUPRC: 0.98214
+Test results --- Accuracy: 0.85714, Precision: 0.85417, Recall: 0.85417 Specificity: 0.85417, F1: 0.85417, AUROC: 0.95833, AUPRC: 0.97500
+
+>>>>>>>average testing<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Sample-level results: 
+
+Validation results --- Accuracy: 76.06+-9.40%, Precision: 77.12+-9.53%, Recall: 76.00+-8.86%, Specificity: 76.00+-8.86%, F1: 75.70+-9.28%, AUROC: 84.92+-10.06%, AUPRC: 84.94+-9.89%
+Test results --- Accuracy: 76.52+-6.97%, Precision: 77.74+-6.35%, Recall: 76.49+-6.10%, Specificity: 76.49+-6.10%, F1: 76.11+-6.78%, AUROC: 84.45+-8.63%, AUPRC: 83.70+-8.93%
+Subject-level results after majority voting: 
+
+Validation results --- Accuracy: 81.52+-9.22%, Precision: 85.78+-7.05%, Recall: 81.81+-7.77%, Specificity: 81.81+-7.77%, F1: 80.88+-9.54%, AUROC: 89.90+-12.12%, AUPRC: 93.42+-7.52%
+Test results --- Accuracy: 83.17+-5.64%, Precision: 86.67+-3.86%, Recall: 83.65+-4.46%, Specificity: 83.65+-4.46%, F1: 82.76+-5.69%, AUROC: 88.12+-8.91%, AUPRC: 92.71+-5.52%
+
+Confusion Matrices (row-normalized; element-wise mean±std across runs; in %):
+Sample-level Confusion Matrix (Val) [mean±std, %]
+  78.37±9.60  21.63±9.60
+  26.37±15.84  73.63±15.84
+
+Sample-level Confusion Matrix (Test) [mean±std, %]
+  78.53±8.57  21.47±8.57
+  25.56±15.10  74.44±15.10
+
+Subject-level Confusion Matrix (Val) [mean±std, %]
+  89.33±8.79  10.67±8.79
+  25.71±22.86  74.29±22.86
+
+Subject-level Confusion Matrix (Test) [mean±std, %]
+  92.67±9.04  7.33±9.04
+  25.36±16.92  74.64±16.92

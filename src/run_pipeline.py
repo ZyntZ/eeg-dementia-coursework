@@ -5,6 +5,7 @@ import sys
 steps = [
     ["python", "src/04_extract_features.py"],
     ["python", "src/05_train_eval_real.py"],
+    ["python", "src/14_connectivity.py"],
     ["python", "src/11_stats.py"],
     ["python", "src/12_plots.py"],
     ["python", "src/13_baseline_nn.py"],
@@ -20,10 +21,10 @@ steps = [
 
 for cmd in steps:
     # признаки не пересчитываем, если нет сырых данных, но таблица уже лежит
-    if cmd[1] == "src/04_extract_features.py":
+    if cmd[1] in ("src/04_extract_features.py", "src/14_connectivity.py"):
         if not pathlib.Path("data/raw/ds004504").exists() and \
                 pathlib.Path("data/features_spectral.csv").exists():
-            print(f"skip {cmd[1]} - нет data/raw, беру готовый features_spectral.csv")
+            print(f"skip {cmd[1]} - нет data/raw, беру готовые таблицы из data/")
             continue
     print(f">>> {' '.join(cmd)}")
     subprocess.run(cmd, check=True)

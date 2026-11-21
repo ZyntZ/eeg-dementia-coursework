@@ -15,6 +15,7 @@ steps = [
     ["python", "src/20_export_tables.py"],
     ["python", "src/21_eval_subject_level.py"],
     ["python", "src/22_eval_state.py"],
+    ["python", "src/24_paired_conditions.py"],
 ]
 
 for cmd in steps:

@@ -43,15 +43,25 @@ def model():
                          LogisticRegression(C=1.0, max_iter=5000, class_weight="balanced"))
 
 
+# Два набора признаков. "compact" - восемь штук, так было в 15_loso_eval.py с
+# самого начала. "all" - всё, что посчитал 04. На 88 людях широкий набор
+# переобучается: на три класса LOSO даёт 0.462 против 0.557 у компактного,
+# на AD vs HC 0.730 против 0.764. Headline-числа берём по compact, широкий
+# набор остаётся в таблице, чтобы разницу было видно.
+COMPACT = ["rel_delta_mean", "rel_theta_mean", "rel_alpha_mean", "rel_beta_mean",
+           "rel_alpha_occipital", "alpha_theta_ratio", "spectral_entropy", "peak_alpha"]
+
+
 def load():
     df = pd.read_csv(FEATURES_CSV)
-    feats = [c for c in df.columns if c.startswith("rel_")] + \
-            [c for c in ("alpha_theta_ratio", "theta_beta_ratio", "spectral_entropy",
-                         "peak_alpha") if c in df.columns]
+    wide = [c for c in df.columns if c.startswith("rel_")] + \
+           [c for c in ("alpha_theta_ratio", "theta_beta_ratio", "spectral_entropy",
+                        "peak_alpha") if c in df.columns]
     # пик альфы может не найтись, заполняем медианой по условию и помечаем
-    for c in feats:
+    for c in wide:
         df[c] = df.groupby("condition")[c].transform(lambda s: s.fillna(s.median()))
-    return df, feats
+    sets = {"compact": [c for c in COMPACT if c in df.columns], "all": wide}
+    return df, sets
 
 
 def label(df, task):
@@ -178,22 +188,28 @@ def run_combined(df, feats, task, c1, c2):
 
 
 def main():
-    df, feats = load()
+    df, sets = load()
     conds = [c for c in df.condition.unique()]
     eo_conds = [c for c in conds if c.startswith("EO")]
     test_conds = [TRAIN_COND] + eo_conds + [c for c in conds if c == "EC_match"]
     print("условия в таблице:", conds)
-    print("признаков:", len(feats))
 
     rows = []
-    for task in ("AD_vs_HC", "PAT_vs_HC", "3class"):
-        print(f"\n--- {task}")
-        rows += run_loso(df, feats, task, TRAIN_COND, test_conds)
-        rows += run_familiar(df, feats, task, TRAIN_COND, test_conds)
-        for eo in eo_conds:
-            rows += run_combined(df, feats, task, TRAIN_COND, eo)
+    for fs_name, feats in sets.items():
+        print(f"\n===== набор признаков: {fs_name} ({len(feats)} шт.)")
+        for task in ("AD_vs_HC", "PAT_vs_HC", "3class"):
+            print(f"\n--- {task}")
+            new = []
+            new += run_loso(df, feats, task, TRAIN_COND, test_conds)
+            new += run_familiar(df, feats, task, TRAIN_COND, test_conds)
+            for eo in eo_conds:
+                new += run_combined(df, feats, task, TRAIN_COND, eo)
+            for r in new:
+                r["features"] = fs_name
+            rows += new
 
     out = pd.DataFrame(rows)
+    out = out[["features"] + [c for c in out.columns if c != "features"]]
     chance = {"3class": 1 / 3, "AD_vs_HC": 0.5, "PAT_vs_HC": 0.5}
     out["chance"] = out.task.map(chance)
     out = out.round(3)

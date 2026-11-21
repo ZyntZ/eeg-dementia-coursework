@@ -1,10 +1,19 @@
-test,p_raw,p_fdr,significant
-rel_alpha_occipital / HC,0.00039179072264019935,0.003526116503761794,True
-rel_alpha_occipital / AD,0.04568294290500025,0.12220233802735854,False
-rel_alpha_occipital / FTD,0.05431215023438157,0.12220233802735854,False
-alpha_theta_ratio / HC,0.0011533315163097543,0.0051899918233938944,True
-alpha_theta_ratio / AD,0.11302690400980167,0.20056444888266553,False
-alpha_theta_ratio / FTD,0.13370963258844368,0.20056444888266553,False
-rel_theta_mean / HC,0.8696347915216699,0.870459961289337,False
-rel_theta_mean / AD,0.870459961289337,0.870459961289337,False
-rel_theta_mean / FTD,0.17911962354302374,0.2302966588410305,False
+family,test,n,mean_from,mean_to,change_pct,p_raw,p_fdr,significant
+alpha_reactivity,rel_alpha_occipital / EC_match->EO / HC,25,0.4718,0.311,-34.1,0.0013,0.00778,True
+alpha_reactivity,rel_alpha_occipital / EC_match->EO / AD,27,0.2681,0.1977,-26.3,0.12253,0.18034,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO / FTD,19,0.3077,0.2308,-25.0,0.13362,0.18034,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_photic / HC,24,0.4832,0.2942,-39.1,0.00043,0.00516,True
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_photic / AD,25,0.2816,0.2001,-28.9,0.04826,0.11583,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_photic / FTD,17,0.3125,0.2106,-32.6,0.10889,0.18034,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_nophotic / HC,21,0.435,0.329,-24.4,0.01947,0.07789,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_nophotic / AD,14,0.2353,0.2157,-8.4,0.62573,0.62573,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_nophotic / FTD,14,0.3343,0.2503,-25.1,0.13525,0.18034,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_broad / HC,25,0.4718,0.4113,-12.8,0.03417,0.10252,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_broad / AD,27,0.2681,0.2407,-10.2,0.45532,0.49671,False
+alpha_reactivity,rel_alpha_occipital / EC_match->EO_broad / FTD,19,0.3077,0.2633,-14.4,0.44133,0.49671,False
+other_features,alpha_theta_ratio / EC_match->EO / HC,25,4.801,3.1487,-34.4,0.02027,0.12165,False
+other_features,alpha_theta_ratio / EC_match->EO / AD,27,2.0056,1.3552,-32.4,0.36078,0.59319,False
+other_features,alpha_theta_ratio / EC_match->EO / FTD,19,2.3891,1.7551,-26.5,0.10416,0.31247,False
+other_features,rel_theta_mean / EC_match->EO / HC,25,0.0916,0.0893,-2.5,0.73099,0.73099,False
+other_features,rel_theta_mean / EC_match->EO / AD,27,0.1812,0.1842,1.6,0.62766,0.73099,False
+other_features,rel_theta_mean / EC_match->EO / FTD,19,0.1317,0.1461,10.9,0.39546,0.59319,False

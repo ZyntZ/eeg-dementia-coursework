@@ -30,7 +30,7 @@ def raw_status():
     root = pathlib.Path("data/raw")
     plist = root / "ds004504/participants.tsv"
     if not plist.exists():
-        return 0, 0
+        return 0, 0     # данных нет вовсе: считать нечего
     people = sum(1 for i, line in enumerate(plist.read_text().splitlines())
                  if i and line.strip())
     got = len(list(root.glob("ds004504/derivatives/**/*.set"))) + \
@@ -40,15 +40,17 @@ def raw_status():
 
 HEAVY = ("src/04_extract_features.py", "src/14_connectivity.py")
 got, expect = raw_status()
+raw_complete = expect > 0 and got >= expect
 
 for cmd in steps:
     # признаки пересчитываем только при полной выгрузке data/raw
-    if cmd[1] in HEAVY and got < expect:
+    if cmd[1] in HEAVY and not raw_complete:
         if not pathlib.Path("data/features_spectral.csv").exists():
             raise SystemExit(f"нет готовых таблиц, а в data/raw {got} записей "
                              f"из {expect}: запустите src/00_fetch_data.py")
-        print(f"skip {cmd[1]} - в data/raw {got} записей из {expect}, "
-              f"беру готовые таблицы из data/")
+        why = (f"в data/raw {got} записей из {expect}" if expect
+               else "нет data/raw")
+        print(f"skip {cmd[1]} - {why}, беру готовые таблицы из data/")
         continue
     print(f">>> {' '.join(cmd)}")
     subprocess.run(cmd, check=True)

@@ -75,17 +75,18 @@ def _lead_ba(path, binary):
 
 
 def fig_lead():
-    runs = [("смесь ГЗ и ГО", "adhc", "multi"),
+    runs = [("смесь\nГЗ и ГО", "adhc", "multi"),
             ("только ГЗ", "rs_adhc", "rs_multi"),
+            ("ГЗ\nпрорежена", "rsm_adhc", None),
             ("только ГО", "ps_adhc", "ps_multi")]
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.4))
     for ax, (task, binary) in zip(axes, [("БА против контроля", True),
                                          ("Три класса", False)]):
         for i, (name, b_slug, m_slug) in enumerate(runs):
             slug = b_slug if binary else m_slug
-            f = ROOT / f"reports/lead_5fold_{slug}.csv"
-            if not f.exists():
-                ax.text(i, 52, "прогон\nне готов", ha="center", fontsize=9,
+            f = ROOT / f"reports/lead_5fold_{slug}.csv" if slug else None
+            if f is None or not f.exists():
+                ax.text(i, 8, "не\nсчиталась", ha="center", fontsize=8.5,
                         color="grey")
                 continue
             ba = _lead_ba(f, binary)
@@ -98,7 +99,7 @@ def fig_lead():
                     fontsize=9.5)
         ax.axhline(50 if binary else 100 / 3, color="grey", ls="--", lw=1)
         ax.set_xticks(range(len(runs)))
-        ax.set_xticklabels([r[0] for r in runs], fontsize=9)
+        ax.set_xticklabels([r[0] for r in runs], fontsize=8.5)
         ax.set_ylim(0, 105)
         ax.set_ylabel("сбалансированная точность, %")
         ax.set_title(task, fontsize=11)

@@ -17,6 +17,7 @@ steps = [
     ["python", "src/21_eval_subject_level.py"],
     ["python", "src/22_eval_state.py"],
     ["python", "src/24_paired_conditions.py"],
+    ["python", "src/25_per_class.py"],
 ]
 
 for cmd in steps:

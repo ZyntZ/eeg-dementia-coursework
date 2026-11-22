@@ -96,6 +96,7 @@ src/21_eval_subject_level.py  AD vs HC, пациенты vs контроль, Г
 src/22_eval_state.py          различение самих состояний внутри каждой группы
 src/24_paired_conditions.py   ГЗ против ГО на одних и тех же людях, Макнемар
 src/25_per_class.py           полнота по классам и матрицы ошибок
+src/26_figures_paper.py       рисунки для текста работы -> figures/paper/
 src/14_connectivity.py        wPLI по парам электродов -> features_conn.csv
 src/08_lead_preprocessing.py  сегментация под LEAD
 src/09_lead_merge.py          слияние RS и PS

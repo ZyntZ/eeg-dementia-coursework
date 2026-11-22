@@ -2,9 +2,7 @@ import pandas as pd, numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import balanced_accuracy_score, f1_score
-from sklearn.decomposition import PCA
-from sklearn.pipeline import Pipeline
+from sklearn.metrics import balanced_accuracy_score
 
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
@@ -39,7 +37,6 @@ for name, feats in sets.items():
             X_test=df.loc[mask, feats].values; y_test=df.loc[mask,"diagnosis"].values
             pred=clf.predict(scaler.transform(X_test))
             res.append((test_name, balanced_accuracy_score(y_test,pred)))
-    import pandas as pd
     r=pd.DataFrame(res, columns=["test","BA"])
     print(r.groupby("test")["BA"].mean().round(3).to_dict())
 

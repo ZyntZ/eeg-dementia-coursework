@@ -19,7 +19,6 @@
 
 Запуск: python src/21_eval_subject_level.py
 """
-import itertools
 from pathlib import Path
 
 import numpy as np

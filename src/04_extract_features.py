@@ -322,6 +322,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0, help="взять первых N человек")
     ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--allow-partial", action="store_true",
+                    help="разрешить перезапись таблицы неполным прогоном")
     args = ap.parse_args()
 
     # список людей берём из participants.tsv, а не из имён папок: если скачаны
@@ -400,6 +402,15 @@ def main():
         columns={"Group": "diagnosis"})
     meta["diagnosis"] = meta["diagnosis"].map({"A": "AD", "F": "FTD", "C": "HC"})
     df = df.merge(meta, on="participant_id", how="left")
+
+    # Частичная докачка data/raw - обычное дело, и тогда таблица выходит
+    # куцей. Молча затирать готовую полную таблицу нельзя.
+    got, expect = df["participant_id"].nunique(), len(meta)
+    out_path = Path(args.out)
+    if got < expect and out_path.exists() and not (args.limit or args.allow_partial):
+        sys.exit(f"ОТКАЗ: записи найдены у {got} человек из {expect}, "
+                 f"а {out_path} уже лежит готовый. Докачайте данные "
+                 f"(src/00_fetch_data.py) или запустите с --allow-partial")
     df.to_csv(args.out, index=False)
 
     print("\nстрок:", len(df))

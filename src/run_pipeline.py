@@ -1,10 +1,10 @@
 import pathlib
 import subprocess
-import sys
 
 steps = [
     ["python", "src/04_extract_features.py"],
     ["python", "src/05_train_eval_real.py"],
+    ["python", "src/06_feature_analysis.py"],
     ["python", "src/14_connectivity.py"],
     ["python", "src/11_stats.py"],
     ["python", "src/12_plots.py"],
@@ -21,13 +21,35 @@ steps = [
     ["python", "src/26_figures_paper.py"],
 ]
 
+def raw_status():
+    """Сколько записей скачано и сколько ожидается.
+
+    Проверять наличие каталога мало: при оборванной докачке в data/raw
+    лежит часть записей, и пересчёт затирает готовые таблицы неполными.
+    """
+    root = pathlib.Path("data/raw")
+    plist = root / "ds004504/participants.tsv"
+    if not plist.exists():
+        return 0, 0
+    people = sum(1 for i, line in enumerate(plist.read_text().splitlines())
+                 if i and line.strip())
+    got = len(list(root.glob("ds004504/derivatives/**/*.set"))) + \
+        len(list(root.glob("ds006036/derivatives/**/*.set")))
+    return got, 2 * people
+
+
+HEAVY = ("src/04_extract_features.py", "src/14_connectivity.py")
+got, expect = raw_status()
+
 for cmd in steps:
-    # признаки не пересчитываем, если нет сырых данных, но таблица уже лежит
-    if cmd[1] in ("src/04_extract_features.py", "src/14_connectivity.py"):
-        if not pathlib.Path("data/raw/ds004504").exists() and \
-                pathlib.Path("data/features_spectral.csv").exists():
-            print(f"skip {cmd[1]} - нет data/raw, беру готовые таблицы из data/")
-            continue
+    # признаки пересчитываем только при полной выгрузке data/raw
+    if cmd[1] in HEAVY and got < expect:
+        if not pathlib.Path("data/features_spectral.csv").exists():
+            raise SystemExit(f"нет готовых таблиц, а в data/raw {got} записей "
+                             f"из {expect}: запустите src/00_fetch_data.py")
+        print(f"skip {cmd[1]} - в data/raw {got} записей из {expect}, "
+              f"беру готовые таблицы из data/")
+        continue
     print(f">>> {' '.join(cmd)}")
     subprocess.run(cmd, check=True)
 print("pipeline done")

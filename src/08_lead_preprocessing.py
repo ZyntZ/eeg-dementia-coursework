@@ -1,4 +1,4 @@
-import os, json, numpy as np, mne
+import json, numpy as np, mne
 import pandas as pd
 from pathlib import Path
 from scipy.signal import resample

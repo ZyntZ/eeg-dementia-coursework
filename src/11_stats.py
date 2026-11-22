@@ -1,8 +1,7 @@
 import pandas as pd
-import numpy as np, numpy as np
-from pathlib import Path
-from sklearn.metrics import balanced_accuracy_score, f1_score
-from scipy.stats import ttest_rel, wilcoxon, bootstrap
+import numpy as np
+from sklearn.metrics import balanced_accuracy_score
+from scipy.stats import ttest_rel, wilcoxon
 
 df=pd.read_csv("data/features_spectral.csv")
 rep=pd.read_csv("reports/metrics_real.csv")

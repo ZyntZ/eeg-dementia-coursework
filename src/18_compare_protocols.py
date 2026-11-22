@@ -1,4 +1,4 @@
-import pandas as pd, numpy as np
+import pandas as pd
 from pathlib import Path
 
 # Сводка всех протоколов: 5-fold LogReg, 5-fold MLP, LOSO LogReg, LOSO MLP

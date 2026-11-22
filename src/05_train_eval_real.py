@@ -1,5 +1,4 @@
 import pandas as pd, numpy as np
-from pathlib import Path
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import balanced_accuracy_score, f1_score, confusion_matrix, classification_report
@@ -75,7 +74,7 @@ print(res.groupby("test")[["BA","F1_macro"]].std().round(3))
 
 # Парное сравнение EC_new vs EO_new на одних и тех же новых людях
 # Для каждого фолда считаем BA отдельно и делаем парный тест
-from scipy.stats import ttest_rel, wilcoxon
+from scipy.stats import ttest_rel
 ec_ba = res[res.test=="EC_new"].set_index("fold")["BA"]
 eo_ba = res[res.test=="EO_new"].set_index("fold")["BA"]
 print(f"\nПарное: EC_new mean {ec_ba.mean():.3f} vs EO_new mean {eo_ba.mean():.3f}")

@@ -1,6 +1,5 @@
 import pandas as pd
 from pathlib import Path
-import re
 
 # 1. Участники
 p1 = Path("data/raw/ds004504/participants.tsv")
@@ -27,7 +26,6 @@ if len(mismatch)>0:
     print(mismatch.head())
 
 # 2. Разметка ГО в ds006036
-import glob
 missing = []
 has_open = []
 for sub in sorted(ids1):

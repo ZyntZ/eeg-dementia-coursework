@@ -89,6 +89,7 @@ src/00_fetch_data.py          скачать данные, версии зафи
 src/01_check_overlap_real.py  сверка 88 ID, диагнозов и возраста
 src/04_extract_features.py    признаки -> data/features_spectral.csv
 src/05_train_eval_real.py     5 фолдов, трёхклассовая LogReg
+src/06_feature_analysis.py    средние по группам + боксплоты альфы
 src/11_stats.py               парные тесты Вилкоксона + FDR BH + bootstrap
 src/15_loso_eval.py           LOSO, трёхклассовая LogReg
 src/17_mlp_loso.py            LOSO, MLP
@@ -107,6 +108,21 @@ pip install -r requirements.txt
 python src/00_fetch_data.py
 python src/run_pipeline.py
 ```
+
+`run_pipeline.py` пересчитывает признаки и связность только при полной
+выгрузке: считает файлы в `data/raw/*/derivatives` и сравнивает с числом
+людей в `participants.tsv`. Если записей меньше (оборванная докачка -
+обычное дело), шаги 04 и 14 пропускаются, в дело идут готовые таблицы из
+`data/`. Сам `04_extract_features.py` тоже откажется перезаписать готовую
+таблицу неполным прогоном без `--allow-partial`.
+
+Разведочные скрипты (`02_inspect_eeg.py`, `03_parse_photomark.py`,
+`07_improved_model.py`) в пайплайн не входят: они печатают на экран и
+запускались руками, когда разбирались с разметкой и подбором признаков.
+Дообучение LEAD живёт в ноутбуках `notebooks/lead5`, `notebooks/lead6`:
+оно идёт через `LEAD/run.py` на Kaggle, а логи оттуда разбирает
+`23_lead_parse.py`. Файл `configs/pipeline.yaml` - не вход, а выход:
+его переписывает `18_compare_protocols.py`.
 
 ## Статус
 

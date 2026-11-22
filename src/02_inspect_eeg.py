@@ -33,7 +33,7 @@ for ds, task in [("ds004504","eyesclosed"),("ds006036","photomark")]:
 
 # Проверим все длительности быстро без загрузки данных
 print("\n--- Сводка длительностей ---")
-import json, glob
+import json
 for ds, task in [("ds004504","eyesclosed"),("ds006036","photomark")]:
     durations=[]
     for sub in sorted([p.name for p in Path(f"data/raw/{ds}").glob("sub-*")]):

@@ -15,7 +15,6 @@
 Запуск: python src/25_per_class.py
 """
 import importlib.util
-import os
 import sys
 from pathlib import Path
 

@@ -1,5 +1,4 @@
-import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns
-from pathlib import Path
+import pandas as pd, matplotlib.pyplot as plt, seaborn as sns
 import matplotlib
 matplotlib.use("Agg")
 
@@ -7,7 +6,6 @@ df=pd.read_csv("data/features_spectral.csv")
 rep=pd.read_csv("reports/metrics_real.csv")
 
 # 1. Confusion avg уже есть, делаем heatmap
-import ast
 # Пересчитаем матрицы из 05_train_eval_real.py логика, но сделаем быстро по rep
 # Сделаем bar для BA
 plt.figure(figsize=(7,4))

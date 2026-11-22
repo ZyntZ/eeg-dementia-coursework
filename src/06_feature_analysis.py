@@ -1,9 +1,7 @@
-import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns
-from pathlib import Path
+import pandas as pd, matplotlib.pyplot as plt, seaborn as sns
 df=pd.read_csv("data/features_spectral.csv")
 # Покажем распределения
 # 1. Alpha occipital HC vs AD EC
-import scipy.stats as st
 plt.figure(figsize=(10,4))
 plt.subplot(1,2,1)
 sns.boxplot(data=df[df.condition=="EC"], x="diagnosis", y="rel_alpha_occipital", order=["AD","FTD","HC"])

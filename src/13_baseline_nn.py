@@ -1,4 +1,4 @@
-import pandas as pd, numpy as np, random, os
+import numpy as np, random
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import balanced_accuracy_score

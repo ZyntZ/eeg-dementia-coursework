@@ -1,5 +1,4 @@
 import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns
-from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 from sklearn.metrics import confusion_matrix

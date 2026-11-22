@@ -2,7 +2,6 @@ import pandas as pd, numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import balanced_accuracy_score, f1_score, confusion_matrix, classification_report
-from pathlib import Path
 from tqdm import tqdm
 
 import sys, os

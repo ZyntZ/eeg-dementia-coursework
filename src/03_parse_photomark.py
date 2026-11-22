@@ -1,10 +1,9 @@
 import pandas as pd
-from pathlib import Path
 
 # Проверим что именно размечено как open/closed eyes
 # ds006036 — ключевой: нужно выделить интервалы ГО для чистого сравнения с ГЗ
 def analyze_photomark(sub="sub-001"):
-    df=pd.read_csv(f"data/raw/ds006036/{sub}/eeg/{sub}_task-photomark_events.tsv", sep="\t")
+    df=pd.read_csv("data/raw/ds006036/{sub}/eeg/{sub}_task-photomark_events.tsv", sep="\t")
     print(f"{sub}: всего {len(df)} событий")
     # уникальные value
     print(df["value"].value_counts().head(20))
@@ -27,7 +26,6 @@ def analyze_photomark(sub="sub-001"):
     print(f"closed_times: {closed_times[:5]}")
     # проверим структуру: обычно open -> ... -> closed
     # посчитаем суммарную длительность ГО
-    import numpy as np
     total_open=0
     for ot in open_times:
         # найти следующее closed после open
@@ -43,5 +41,5 @@ for sub in ["sub-001","sub-002","sub-011","sub-037"]:
 # Проверим sub-011 — почему нет разметки
 print("\n"+"="*60)
 print("sub-011 подробно:")
-df=pd.read_csv(f"data/raw/ds006036/sub-011/eeg/sub-011_task-photomark_events.tsv", sep="\t")
+df=pd.read_csv("data/raw/ds006036/sub-011/eeg/sub-011_task-photomark_events.tsv", sep="\t")
 print(df["value"].unique())

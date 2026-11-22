@@ -6,7 +6,7 @@ def load_features(path="data/features_spectral.csv"):
     """Читает таблицу признаков и заполняет пропуски медианой по условию.
 
     Пропуск бывает только у peak_alpha: если локального максимума в альфе нет,
-    04 честно пишет NaN и ставит peak_alpha_found=False. LogisticRegression
+    04 пишет NaN и ставит peak_alpha_found=False. LogisticRegression
     NaN не принимает, поэтому заполняем, а флаг остаётся в таблице.
     """
     df = pd.read_csv(path)

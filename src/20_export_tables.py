@@ -1,11 +1,5 @@
-from pathlib import Path
 import pandas as pd
 df=pd.read_csv("reports/compare_protocols.csv")
-# LaTeX table без AI стиля, только цифры
-latex=df.to_latex(index=False, float_format="%.3f", caption="Сравнение протоколов EC/EO", label="tab:compare")
-Path("reports/compare_protocols.tex").write_text(latex)
-print("saved tex")
-
 # CSV для вставки в курсовую
 for prot in df.protocol.unique():
     sub=df[df.protocol==prot]

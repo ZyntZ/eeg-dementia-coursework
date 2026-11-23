@@ -35,6 +35,13 @@ OUT = "reports/paired_conditions.csv"
 TRAIN_COND = "EC"
 SEED = 42
 
+# "selected" - восемь признаков, которые отбирает F-критерий в 27. Отбор там
+# идёт внутри обучающей части каждого фолда, и во всех фолдах выходит один
+# и тот же список, поэтому здесь он записан явно.
+SELECTED = ["rel_theta_mean", "rel_theta_occipital", "rel_theta_frontal",
+            "rel_alpha_mean", "rel_alpha_occipital", "rel_alpha_frontal",
+            "alpha_theta_ratio", "theta_beta_ratio"]
+
 COMPACT = ["rel_delta_mean", "rel_theta_mean", "rel_alpha_mean", "rel_beta_mean",
            "rel_alpha_occipital", "alpha_theta_ratio", "spectral_entropy", "peak_alpha"]
 
@@ -103,7 +110,9 @@ def main():
     wide = [c for c in df.columns if c.startswith("rel_")] + \
            [c for c in ("alpha_theta_ratio", "theta_beta_ratio",
                         "spectral_entropy", "peak_alpha") if c in df.columns]
-    sets = {"compact": [c for c in COMPACT if c in df.columns], "all": wide}
+    sets = {"compact": [c for c in COMPACT if c in df.columns],
+            "all": wide,
+            "selected": [c for c in SELECTED if c in df.columns]}
     conds = sorted({c for p in PAIRS for c in p})
 
     rows = []

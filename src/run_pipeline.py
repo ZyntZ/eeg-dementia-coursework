@@ -18,6 +18,7 @@ steps = [
     ["python", "src/22_eval_state.py"],
     ["python", "src/24_paired_conditions.py"],
     ["python", "src/25_per_class.py"],
+    ["python", "src/27_feature_space.py"],
     ["python", "src/26_figures_paper.py"],
 ]
 
